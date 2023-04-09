@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		323E1DD229E1FB7900D2165B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E1DD129E1FB7900D2165B /* MainView.swift */; };
+		323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E1DD129E1FB7900D2165B /* ContentView.swift */; };
 		32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC529E1F8D5004F0852 /* AppDelegate.swift */; };
 		32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC729E1F8D5004F0852 /* SceneDelegate.swift */; };
 		32980DCA29E1F8D5004F0852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC929E1F8D5004F0852 /* ViewController.swift */; };
 		32980DCD29E1F8D5004F0852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32980DCB29E1F8D5004F0852 /* Main.storyboard */; };
 		32980DCF29E1F8D6004F0852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32980DCE29E1F8D6004F0852 /* Assets.xcassets */; };
 		32980DD229E1F8D6004F0852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32980DD029E1F8D6004F0852 /* LaunchScreen.storyboard */; };
+		32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */; };
+		32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEBFCF29E2DFE8002D4499 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		323E1DD129E1FB7900D2165B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		323E1DD129E1FB7900D2165B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32980DC229E1F8D5004F0852 /* MarsRovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsRovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32980DC529E1F8D5004F0852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32980DC729E1F8D5004F0852 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		32980DCE29E1F8D6004F0852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32980DD129E1F8D6004F0852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32980DD329E1F8D6004F0852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nasa.ttf; sourceTree = "<group>"; };
+		32FEBFCF29E2DFE8002D4499 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +46,8 @@
 		3262BB7929E1FB14001214F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				323E1DD129E1FB7900D2165B /* MainView.swift */,
+				32FEBFC529E2DC17002D4499 /* MainView */,
+				32FEBFCC29E2DDB9002D4499 /* ContentView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -67,15 +72,96 @@
 			isa = PBXGroup;
 			children = (
 				3262BB7929E1FB14001214F3 /* View */,
-				32980DC529E1F8D5004F0852 /* AppDelegate.swift */,
-				32980DC729E1F8D5004F0852 /* SceneDelegate.swift */,
-				32980DC929E1F8D5004F0852 /* ViewController.swift */,
-				32980DCB29E1F8D5004F0852 /* Main.storyboard */,
-				32980DCE29E1F8D6004F0852 /* Assets.xcassets */,
-				32980DD029E1F8D6004F0852 /* LaunchScreen.storyboard */,
-				32980DD329E1F8D6004F0852 /* Info.plist */,
+				32FEBFC429E2DBFE002D4499 /* ViewModels */,
+				32FEBFC829E2DC46002D4499 /* CustomElements */,
+				32FEBFC629E2DC29002D4499 /* Networking */,
+				32FEBFC729E2DC36002D4499 /* Extensions */,
+				32FEBFCB29E2DD13002D4499 /* Enums */,
+				32FEBFC929E2DC59002D4499 /* Application */,
+				32FEBFC329E2DBED002D4499 /* Resourses */,
 			);
 			path = MarsRovers;
+			sourceTree = "<group>";
+		};
+		32FEBFC329E2DBED002D4499 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				32FEBFCA29E2DCCD002D4499 /* Fonts */,
+				32980DD329E1F8D6004F0852 /* Info.plist */,
+				32980DCE29E1F8D6004F0852 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		32FEBFC429E2DBFE002D4499 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		32FEBFC529E2DC17002D4499 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				32980DD029E1F8D6004F0852 /* LaunchScreen.storyboard */,
+				32980DCB29E1F8D5004F0852 /* Main.storyboard */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		32FEBFC629E2DC29002D4499 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		32FEBFC729E2DC36002D4499 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				32FEBFCF29E2DFE8002D4499 /* Fonts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		32FEBFC829E2DC46002D4499 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
+		32FEBFC929E2DC59002D4499 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				32980DC529E1F8D5004F0852 /* AppDelegate.swift */,
+				32980DC929E1F8D5004F0852 /* ViewController.swift */,
+				32980DC729E1F8D5004F0852 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		32FEBFCA29E2DCCD002D4499 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		32FEBFCB29E2DD13002D4499 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		32FEBFCC29E2DDB9002D4499 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				323E1DD129E1FB7900D2165B /* ContentView.swift */,
+			);
+			path = ContentView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +225,7 @@
 				32980DD229E1F8D6004F0852 /* LaunchScreen.storyboard in Resources */,
 				32980DCF29E1F8D6004F0852 /* Assets.xcassets in Resources */,
 				32980DCD29E1F8D5004F0852 /* Main.storyboard in Resources */,
+				32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +237,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				32980DCA29E1F8D5004F0852 /* ViewController.swift in Sources */,
-				323E1DD229E1FB7900D2165B /* MainView.swift in Sources */,
+				32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */,
+				323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */,
 				32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */,
 				32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */,
 			);
@@ -228,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -282,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -301,7 +389,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P87Y98S683;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarsRovers/Info.plist;
+				INFOPLIST_FILE = MarsRovers/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -330,7 +418,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P87Y98S683;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarsRovers/Info.plist;
+				INFOPLIST_FILE = MarsRovers/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
