@@ -14,6 +14,24 @@
 		32980DCD29E1F8D5004F0852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32980DCB29E1F8D5004F0852 /* Main.storyboard */; };
 		32980DCF29E1F8D6004F0852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32980DCE29E1F8D6004F0852 /* Assets.xcassets */; };
 		32980DD229E1F8D6004F0852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32980DD029E1F8D6004F0852 /* LaunchScreen.storyboard */; };
+		32D66D7229E423BD005D8789 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7129E423BD005D8789 /* Images.swift */; };
+		32D66D7429E4240A005D8789 /* InfinityCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7329E4240A005D8789 /* InfinityCarousel.swift */; };
+		32D66D7629E576CB005D8789 /* Helvetica Neue.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32D66D7529E576CB005D8789 /* Helvetica Neue.ttf */; };
+		32D66D7929E57710005D8789 /* Helvetica Neue UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32D66D7829E57710005D8789 /* Helvetica Neue UltraLight.ttf */; };
+		32D66D7B29E6D3C9005D8789 /* Sceleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7A29E6D3C9005D8789 /* Sceleton.swift */; };
+		32D66D7D29E6DCC2005D8789 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7C29E6DCC2005D8789 /* Colors.swift */; };
+		32D66D7F29E6DF03005D8789 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7E29E6DF03005D8789 /* CustomNavigationView.swift */; };
+		32D66D8129E6F037005D8789 /* DecodeJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8029E6F037005D8789 /* DecodeJson.swift */; };
+		32D66D8329E6F053005D8789 /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8229E6F053005D8789 /* ResponseData.swift */; };
+		32D66D8529E6F08C005D8789 /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8429E6F08C005D8789 /* RequestData.swift */; };
+		32D66D8829E6F130005D8789 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8729E6F130005D8789 /* Rover.swift */; };
+		32D66D8A29E6F16F005D8789 /* ContentVewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8929E6F16F005D8789 /* ContentVewModel.swift */; };
+		32D66D8C29E8061B005D8789 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8B29E8061B005D8789 /* SettingButton.swift */; };
+		32D66D8E29E80662005D8789 /* LabelRover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8D29E80662005D8789 /* LabelRover.swift */; };
+		32D66D9029E831C7005D8789 /* RoverImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8F29E831C7005D8789 /* RoverImages.swift */; };
+		32D66D9229E843C6005D8789 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9129E843C6005D8789 /* String.swift */; };
+		32D66D9529E967F1005D8789 /* Rovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9429E967F1005D8789 /* Rovers.swift */; };
+		32D66D9729E97314005D8789 /* CardRoverDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9629E97314005D8789 /* CardRoverDescription.swift */; };
 		32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */; };
 		32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEBFCF29E2DFE8002D4499 /* Fonts.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +46,24 @@
 		32980DCE29E1F8D6004F0852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32980DD129E1F8D6004F0852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32980DD329E1F8D6004F0852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32D66D7129E423BD005D8789 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		32D66D7329E4240A005D8789 /* InfinityCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityCarousel.swift; sourceTree = "<group>"; };
+		32D66D7529E576CB005D8789 /* Helvetica Neue.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Neue.ttf"; sourceTree = "<group>"; };
+		32D66D7829E57710005D8789 /* Helvetica Neue UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Neue UltraLight.ttf"; sourceTree = "<group>"; };
+		32D66D7A29E6D3C9005D8789 /* Sceleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sceleton.swift; sourceTree = "<group>"; };
+		32D66D7C29E6DCC2005D8789 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		32D66D7E29E6DF03005D8789 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		32D66D8029E6F037005D8789 /* DecodeJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeJson.swift; sourceTree = "<group>"; };
+		32D66D8229E6F053005D8789 /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
+		32D66D8429E6F08C005D8789 /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
+		32D66D8729E6F130005D8789 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
+		32D66D8929E6F16F005D8789 /* ContentVewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentVewModel.swift; sourceTree = "<group>"; };
+		32D66D8B29E8061B005D8789 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
+		32D66D8D29E80662005D8789 /* LabelRover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelRover.swift; sourceTree = "<group>"; };
+		32D66D8F29E831C7005D8789 /* RoverImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImages.swift; sourceTree = "<group>"; };
+		32D66D9129E843C6005D8789 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		32D66D9429E967F1005D8789 /* Rovers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rovers.swift; sourceTree = "<group>"; };
+		32D66D9629E97314005D8789 /* CardRoverDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverDescription.swift; sourceTree = "<group>"; };
 		32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nasa.ttf; sourceTree = "<group>"; };
 		32FEBFCF29E2DFE8002D4499 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +107,8 @@
 		32980DC429E1F8D5004F0852 /* MarsRovers */ = {
 			isa = PBXGroup;
 			children = (
+				32D66D9329E96696005D8789 /* Mocks */,
+				32D66D8629E6F0B8005D8789 /* Models */,
 				3262BB7929E1FB14001214F3 /* View */,
 				32FEBFC429E2DBFE002D4499 /* ViewModels */,
 				32FEBFC829E2DC46002D4499 /* CustomElements */,
@@ -81,6 +119,22 @@
 				32FEBFC329E2DBED002D4499 /* Resourses */,
 			);
 			path = MarsRovers;
+			sourceTree = "<group>";
+		};
+		32D66D8629E6F0B8005D8789 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32D66D8729E6F130005D8789 /* Rover.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		32D66D9329E96696005D8789 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				32D66D9429E967F1005D8789 /* Rovers.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		32FEBFC329E2DBED002D4499 /* Resourses */ = {
@@ -96,6 +150,7 @@
 		32FEBFC429E2DBFE002D4499 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				32D66D8929E6F16F005D8789 /* ContentVewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -112,6 +167,9 @@
 		32FEBFC629E2DC29002D4499 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				32D66D8429E6F08C005D8789 /* RequestData.swift */,
+				32D66D8229E6F053005D8789 /* ResponseData.swift */,
+				32D66D8029E6F037005D8789 /* DecodeJson.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -120,6 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				32FEBFCF29E2DFE8002D4499 /* Fonts.swift */,
+				32D66D7129E423BD005D8789 /* Images.swift */,
+				32D66D7C29E6DCC2005D8789 /* Colors.swift */,
+				32D66D9129E843C6005D8789 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -127,6 +188,11 @@
 		32FEBFC829E2DC46002D4499 /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
+				32D66D7329E4240A005D8789 /* InfinityCarousel.swift */,
+				32D66D7A29E6D3C9005D8789 /* Sceleton.swift */,
+				32D66D7E29E6DF03005D8789 /* CustomNavigationView.swift */,
+				32D66D8B29E8061B005D8789 /* SettingButton.swift */,
+				32D66D8D29E80662005D8789 /* LabelRover.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -144,6 +210,8 @@
 		32FEBFCA29E2DCCD002D4499 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				32D66D7829E57710005D8789 /* Helvetica Neue UltraLight.ttf */,
+				32D66D7529E576CB005D8789 /* Helvetica Neue.ttf */,
 				32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */,
 			);
 			path = Fonts;
@@ -152,6 +220,7 @@
 		32FEBFCB29E2DD13002D4499 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				32D66D8F29E831C7005D8789 /* RoverImages.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -160,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				323E1DD129E1FB7900D2165B /* ContentView.swift */,
+				32D66D9629E97314005D8789 /* CardRoverDescription.swift */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -222,8 +292,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D66D7629E576CB005D8789 /* Helvetica Neue.ttf in Resources */,
 				32980DD229E1F8D6004F0852 /* LaunchScreen.storyboard in Resources */,
 				32980DCF29E1F8D6004F0852 /* Assets.xcassets in Resources */,
+				32D66D7929E57710005D8789 /* Helvetica Neue UltraLight.ttf in Resources */,
 				32980DCD29E1F8D5004F0852 /* Main.storyboard in Resources */,
 				32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */,
 			);
@@ -236,11 +308,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D66D9229E843C6005D8789 /* String.swift in Sources */,
+				32D66D9029E831C7005D8789 /* RoverImages.swift in Sources */,
 				32980DCA29E1F8D5004F0852 /* ViewController.swift in Sources */,
+				32D66D7D29E6DCC2005D8789 /* Colors.swift in Sources */,
+				32D66D9729E97314005D8789 /* CardRoverDescription.swift in Sources */,
+				32D66D9529E967F1005D8789 /* Rovers.swift in Sources */,
 				32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */,
 				323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */,
 				32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */,
+				32D66D7429E4240A005D8789 /* InfinityCarousel.swift in Sources */,
+				32D66D8829E6F130005D8789 /* Rover.swift in Sources */,
 				32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */,
+				32D66D8C29E8061B005D8789 /* SettingButton.swift in Sources */,
+				32D66D8E29E80662005D8789 /* LabelRover.swift in Sources */,
+				32D66D8529E6F08C005D8789 /* RequestData.swift in Sources */,
+				32D66D8129E6F037005D8789 /* DecodeJson.swift in Sources */,
+				32D66D7F29E6DF03005D8789 /* CustomNavigationView.swift in Sources */,
+				32D66D7B29E6D3C9005D8789 /* Sceleton.swift in Sources */,
+				32D66D8329E6F053005D8789 /* ResponseData.swift in Sources */,
+				32D66D7229E423BD005D8789 /* Images.swift in Sources */,
+				32D66D8A29E6F16F005D8789 /* ContentVewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,12 +478,12 @@
 				DEVELOPMENT_TEAM = P87Y98S683;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarsRovers/Resourses/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,9 +491,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "SFX-Montage.MarsRovers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -419,12 +510,12 @@
 				DEVELOPMENT_TEAM = P87Y98S683;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarsRovers/Resourses/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,9 +523,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "SFX-Montage.MarsRovers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

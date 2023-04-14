@@ -5,6 +5,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Nasa.ttf</string>
+		<string>Helvetica Neue.ttf</string>
+		<string>Helvetica Neue UltraLight.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -5,9 +5,13 @@
 //  Created by Steven Kirke on 09.04.2023.
 //
 
-import Foundation
+import SwiftUI
 
 
-struct Fonts {
-    let nasa: String = "Nasa.ttf"
+extension Text {
+    func customFont(size: CGFloat) -> some View {
+        self
+            .font(Font.custom("Helvetica Neue", size: size))
+           // .fontDesign(.default)
+    }
 }
