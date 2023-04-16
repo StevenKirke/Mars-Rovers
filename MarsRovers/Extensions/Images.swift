@@ -25,6 +25,7 @@ extension Image {
         case pictures
         case rocked
         case sun
+        case doc
     }
     
     
@@ -75,6 +76,7 @@ extension Image {
     static let pictures = Image(Icons.pictures)
     static let rocked = Image(Icons.rocked)
     static let sun = Image(Icons.sun)
+    static let doc = Image(Icons.doc)
     
     static let iconCuriosity = Image(LittleIcon.IconCuriosity)
     static let iconPerseverance = Image(LittleIcon.IconPerseverance)

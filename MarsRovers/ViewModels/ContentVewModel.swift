@@ -12,17 +12,15 @@ struct ImagesRovers {
     let littleImage: Image
 }
 
+struct Filter {
+    var roverName: String
+    var sol: Int
+    var camera: String
+}
+
 class ContentVewModel: ObservableObject {
     
-    struct queryItems {
-        var apiKey: String
-        var sol: String
-        var camera: String
-        var page: String
-        var earth_date: String
-    }
-    
-    
+
     var apiKey: String = "PN6lrB0EfMLX8Gfc8JVyOyOmL56BLLaxZg1A5aAZ"
     var url: String = "https://api.nasa.gov/mars-photos/api/v1/rovers"
     
@@ -31,10 +29,28 @@ class ContentVewModel: ObservableObject {
     @Published var rovers: Rovers = Rovers(rovers: [])
     @Published var arrayRovers: [ImagesRovers] = []
     
+    
+    @Published var filter: Filter = Filter(roverName: "", sol: -1, camera: "")
+    
+    @Published var currentIndex: Int = 0 {
+        willSet {
+            filter.roverName = rovers.rovers[newValue].name
+            filter.sol = rovers.rovers[newValue].maxSol
+            guard let camera = rovers.rovers[newValue].cameras.first else {
+                return
+            }
+            filter.camera = camera.name
+        }
+    }
+    
     init() {
-        
         getMock()
     }
+    
+    
+    
+    
+    
     
     func assamblyURL(url: String, key: String, value: String) -> URLRequest? {
         guard var currentUrl = URL(string: url) else {
@@ -64,7 +80,10 @@ class ContentVewModel: ObservableObject {
                 return
             }
             self.rovers = currentData
-            self.addImage()
+            if !self.rovers.rovers.isEmpty {
+                self.addImage()
+
+            }
         }
     }
     
@@ -82,11 +101,12 @@ class ContentVewModel: ObservableObject {
                 }
                 self.rovers = currentData
                 self.addImage()
+                self.initFilter()
             }
         }
     }
     
-    func addImage() {
+    private func addImage() {
         if !rovers.rovers.isEmpty {
             for (_, elem) in rovers.rovers.enumerated() {
                 for name in RoverImages.allCases {
@@ -97,5 +117,18 @@ class ContentVewModel: ObservableObject {
                 }
             }
         }
-    }    
+    }
+    
+    private func initFilter() {
+        guard let rover = self.rovers.rovers.first else {
+            return
+        }
+        guard let firstCamera = rover.cameras.first?.name else {
+            return
+        }
+        self.filter.roverName = rover.name
+        self.filter.sol = rover.maxSol
+        self.filter.camera = firstCamera
+    }
+
 }

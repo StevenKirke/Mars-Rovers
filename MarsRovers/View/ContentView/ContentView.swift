@@ -8,15 +8,16 @@
 import SwiftUI
 
 
+
+
+
 struct ContentView: View {
     
     @ObservedObject var contenVM: ContentVewModel = ContentVewModel()
-    
-    @State var currentIndex: Int = 0
-    @State var isSetting: Bool = true
+    @State var isSetting: Bool = false
     
     var title: String {
-        isSetting ? "Settings" : contenVM.rovers.rovers[currentIndex].name
+        return isSetting ? "Settings" : contenVM.rovers.rovers[contenVM.currentIndex].name
     }
     
     var body: some View {
@@ -39,75 +40,45 @@ struct ContentView: View {
                     VStack(spacing: 19) {
                         CustomNavigationView(title: title,
                                              content: EmptyView())
-                        .transaction { tr in
-                            tr.animation = nil
+                        ZStack(alignment: .topLeading) {
+                            InfinityCarousel(index: $contenVM.currentIndex,
+                                             height: heigthCarousel,
+                                             views: contenVM.arrayRovers)
                         }
-                        InfinityCarousel(index: $currentIndex, height: heigthCarousel,
-                                         views: contenVM.arrayRovers)
                         Spacer()
                     }
-                    /*
-                    CardRoverDescription(rover: contenVM.rovers.rovers[currentIndex],
-                                         icon: contenVM.arrayRovers[currentIndex].littleImage,
-                                         height: heightInfo,
-                                         isSetting: $isSetting)
-                    */
-                    CardRoverSettings(rover: contenVM.rovers.rovers[currentIndex],
-                                      icon: contenVM.arrayRovers[currentIndex].littleImage,
-                                      height: heightInfo,
-                                      isSetting: $isSetting)
+                    CardContent(filter: $contenVM.filter,
+                                rover: contenVM.rovers.rovers[contenVM.currentIndex],
+                                icon: contenVM.arrayRovers[contenVM.currentIndex].littleImage,
+                                height: heightInfo)
                 }
             }
         }
     }
 }
 
-struct CardRoverSettings: View {
+struct CardContent: View {
+    
+    @State var isSetting: Bool = false
+    @Binding var filter: Filter
     
     var rover: Rover
     var icon: Image
     var height: CGFloat
-    @Binding var isSetting: Bool
+    
+    
     
     var body: some View {
-        GeometryReader { proxy in
-            ZStack(alignment: .top) {
-                VStack(spacing: 0) {
-                    Image.starfield
-                        .resizable()
-                    Image.starfield
-                        .resizable()
-                        .rotationEffect(.degrees(180))
-                }
-                .mask(RoundedRectangle(cornerRadius: 13))
-                VStack(spacing: 10) {
-                    SettingButton(isActive: $isSetting, actionSet: {
-                        var transaction = Transaction(animation: .easeInOut(duration: 1))
-                        transaction.disablesAnimations = true
-                        withTransaction(transaction) {
-                            self.isSetting.toggle()
-                        }
-                    }, actionPhoto: {
-                        
-                    })
-                    LabelRover(title: "Launch date", data: rover.launchDate.convertDate(), image: .rocked)
-                    LabelRover(title: "Landing date", data: rover.landingDate.convertDate(), image: .parachute)
-                    LabelRover(title: "Max sol", data: "\(rover.maxSol)", image: .sun)
-                    LabelRover(title: "Total photos", data: "\(rover.totalPhotos)", image: .pictures)
-                    LabelRover(title: "Status", data: rover.status, image: icon)
-                    LabelRover(title: "Cameras", data: "\(rover.cameras.count)", image: .camera)
-
-                    
-                }
-                .coordinateSpace(name: "ButtonBlock")
-                .padding(.horizontal, 26)
-                .padding(.top, 15)
-                .foregroundColor(.white)
-            }
-            .offset(y: !isSetting ? (height / 2) : 0)
+        HStack(alignment: .bottom, spacing: 0) {
+            CardRoverDescription(rover: rover, icon: icon, height: height, filter: filter, isSetting: $isSetting)
+                .frame(width: UIScreen.main.bounds.width)
+            // CardRoverSettings(rover: rover, icon: icon, height: height, isSetting: $isSetting, filter: $filter)
+            //  .frame(width: UIScreen.main.bounds.width)
         }
-        .frame(height: height * 1.5)
+        .frame(width: UIScreen.main.bounds.width)
+        // .offset(x: !isSetting ? UIScreen.main.bounds.width / 2 : -UIScreen.main.bounds.width  / 2)
     }
+    
 }
 
 
@@ -119,11 +90,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 #endif
-
-/*
- var transaction = Transaction(animation: .easeInOut(duration: 1))
- transaction.disablesAnimations = true
- withTransaction(transaction) {
- self.isSetting.toggle()
- }
- */

@@ -27,11 +27,12 @@
 		32D66D8829E6F130005D8789 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8729E6F130005D8789 /* Rover.swift */; };
 		32D66D8A29E6F16F005D8789 /* ContentVewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8929E6F16F005D8789 /* ContentVewModel.swift */; };
 		32D66D8C29E8061B005D8789 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8B29E8061B005D8789 /* SettingButton.swift */; };
-		32D66D8E29E80662005D8789 /* LabelRover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8D29E80662005D8789 /* LabelRover.swift */; };
 		32D66D9029E831C7005D8789 /* RoverImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D8F29E831C7005D8789 /* RoverImages.swift */; };
 		32D66D9229E843C6005D8789 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9129E843C6005D8789 /* String.swift */; };
 		32D66D9529E967F1005D8789 /* Rovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9429E967F1005D8789 /* Rovers.swift */; };
 		32D66D9729E97314005D8789 /* CardRoverDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9629E97314005D8789 /* CardRoverDescription.swift */; };
+		32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */; };
+		32D66D9B29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9A29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift */; };
 		32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */; };
 		32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEBFCF29E2DFE8002D4499 /* Fonts.swift */; };
 /* End PBXBuildFile section */
@@ -59,11 +60,12 @@
 		32D66D8729E6F130005D8789 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		32D66D8929E6F16F005D8789 /* ContentVewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentVewModel.swift; sourceTree = "<group>"; };
 		32D66D8B29E8061B005D8789 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
-		32D66D8D29E80662005D8789 /* LabelRover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelRover.swift; sourceTree = "<group>"; };
 		32D66D8F29E831C7005D8789 /* RoverImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImages.swift; sourceTree = "<group>"; };
 		32D66D9129E843C6005D8789 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		32D66D9429E967F1005D8789 /* Rovers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rovers.swift; sourceTree = "<group>"; };
 		32D66D9629E97314005D8789 /* CardRoverDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverDescription.swift; sourceTree = "<group>"; };
+		32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverSettings.swift; sourceTree = "<group>"; };
+		32D66D9A29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverSettingsVeiwModel.swift; sourceTree = "<group>"; };
 		32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nasa.ttf; sourceTree = "<group>"; };
 		32FEBFCF29E2DFE8002D4499 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				32D66D8929E6F16F005D8789 /* ContentVewModel.swift */,
+				32D66D9A29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -192,7 +195,6 @@
 				32D66D7A29E6D3C9005D8789 /* Sceleton.swift */,
 				32D66D7E29E6DF03005D8789 /* CustomNavigationView.swift */,
 				32D66D8B29E8061B005D8789 /* SettingButton.swift */,
-				32D66D8D29E80662005D8789 /* LabelRover.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -230,6 +232,7 @@
 			children = (
 				323E1DD129E1FB7900D2165B /* ContentView.swift */,
 				32D66D9629E97314005D8789 /* CardRoverDescription.swift */,
+				32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -318,13 +321,14 @@
 				323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */,
 				32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */,
 				32D66D7429E4240A005D8789 /* InfinityCarousel.swift in Sources */,
+				32D66D9B29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift in Sources */,
 				32D66D8829E6F130005D8789 /* Rover.swift in Sources */,
 				32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */,
 				32D66D8C29E8061B005D8789 /* SettingButton.swift in Sources */,
-				32D66D8E29E80662005D8789 /* LabelRover.swift in Sources */,
 				32D66D8529E6F08C005D8789 /* RequestData.swift in Sources */,
 				32D66D8129E6F037005D8789 /* DecodeJson.swift in Sources */,
 				32D66D7F29E6DF03005D8789 /* CustomNavigationView.swift in Sources */,
+				32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */,
 				32D66D7B29E6D3C9005D8789 /* Sceleton.swift in Sources */,
 				32D66D8329E6F053005D8789 /* ResponseData.swift in Sources */,
 				32D66D7229E423BD005D8789 /* Images.swift in Sources */,
