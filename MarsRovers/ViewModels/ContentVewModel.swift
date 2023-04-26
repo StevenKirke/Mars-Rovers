@@ -12,34 +12,25 @@ struct ImagesRovers {
     let littleImage: Image
 }
 
-struct Filter {
-    var roverName: String
-    var sol: Int
-    var camera: String
-}
+
 
 class ContentVewModel: ObservableObject {
     
-
+    
     var apiKey: String = "PN6lrB0EfMLX8Gfc8JVyOyOmL56BLLaxZg1A5aAZ"
     var url: String = "https://api.nasa.gov/mars-photos/api/v1/rovers"
     
     var requestData: RequestData = RequestData()
     
+    
+    @Published var isSetting: Bool = false
     @Published var rovers: Rovers = Rovers(rovers: [])
     @Published var arrayRovers: [ImagesRovers] = []
-    
-    
-    @Published var filter: Filter = Filter(roverName: "", sol: -1, camera: "")
+    @Published var title: String = ""
     
     @Published var currentIndex: Int = 0 {
-        willSet {
-            filter.roverName = rovers.rovers[newValue].name
-            filter.sol = rovers.rovers[newValue].maxSol
-            guard let camera = rovers.rovers[newValue].cameras.first else {
-                return
-            }
-            filter.camera = camera.name
+        didSet {
+            title = isSetting ? "Settings" : rovers.rovers[currentIndex].name
         }
     }
     
@@ -48,11 +39,7 @@ class ContentVewModel: ObservableObject {
     }
     
     
-    
-    
-    
-    
-    func assamblyURL(url: String, key: String, value: String) -> URLRequest? {
+    private func assamblyURL(url: String, key: String, value: String) -> URLRequest? {
         guard var currentUrl = URL(string: url) else {
             print("Error convert URL")
             return nil
@@ -63,12 +50,13 @@ class ContentVewModel: ObservableObject {
         return request
     }
     
-    func getData() {
+    
+    private func getData() {
         let request = assamblyURL(url: url, key: "api_key", value: apiKey)
         guard let currentRequest = request else {
             return
         }
-
+        
         self.requestData.getData(request: currentRequest, model: rovers) { [weak self] data, error in
             if error != "" {
                 print("errors \(String(describing: error))")
@@ -80,14 +68,21 @@ class ContentVewModel: ObservableObject {
                 return
             }
             self.rovers = currentData
+            
+            guard let name = currentData.rovers.first?.name else {
+                return
+                
+            }
+            self.title = name
+            
             if !self.rovers.rovers.isEmpty {
                 self.addImage()
-
             }
         }
     }
     
-    func getMock() {
+    
+    private func getMock() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
             self.requestData.getDataMock(mock: mockRovers, model: self.rovers) { [weak self] data, error in
                 if error != "" {
@@ -100,35 +95,25 @@ class ContentVewModel: ObservableObject {
                     return
                 }
                 self.rovers = currentData
+                guard let name = currentData.rovers.first?.name else {
+                    return
+                }
+                self.title = name
                 self.addImage()
-                self.initFilter()
             }
         }
     }
+    
     
     private func addImage() {
         if !rovers.rovers.isEmpty {
             for (_, elem) in rovers.rovers.enumerated() {
                 for name in RoverImages.allCases {
                     if (elem.name.lowercased() == name.title.lowercased()) {
-                        let tempImage: ImagesRovers = ImagesRovers(bigImage: name.bigImage, littleImage: name.littleImage)
-                        arrayRovers.append(tempImage)
+                        arrayRovers.append( ImagesRovers(bigImage: name.bigImage, littleImage: name.littleImage))
                     }
                 }
             }
         }
     }
-    
-    private func initFilter() {
-        guard let rover = self.rovers.rovers.first else {
-            return
-        }
-        guard let firstCamera = rover.cameras.first?.name else {
-            return
-        }
-        self.filter.roverName = rover.name
-        self.filter.sol = rover.maxSol
-        self.filter.camera = firstCamera
-    }
-
 }

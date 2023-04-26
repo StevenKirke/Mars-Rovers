@@ -14,6 +14,7 @@
 		32980DCD29E1F8D5004F0852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32980DCB29E1F8D5004F0852 /* Main.storyboard */; };
 		32980DCF29E1F8D6004F0852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32980DCE29E1F8D6004F0852 /* Assets.xcassets */; };
 		32980DD229E1F8D6004F0852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32980DD029E1F8D6004F0852 /* LaunchScreen.storyboard */; };
+		32CF697629F7DCBF00B7855B /* CalculateSolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF697529F7DCBF00B7855B /* CalculateSolModel.swift */; };
 		32D66D7229E423BD005D8789 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7129E423BD005D8789 /* Images.swift */; };
 		32D66D7429E4240A005D8789 /* InfinityCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7329E4240A005D8789 /* InfinityCarousel.swift */; };
 		32D66D7629E576CB005D8789 /* Helvetica Neue.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32D66D7529E576CB005D8789 /* Helvetica Neue.ttf */; };
@@ -47,6 +48,7 @@
 		32980DCE29E1F8D6004F0852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32980DD129E1F8D6004F0852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32980DD329E1F8D6004F0852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32CF697529F7DCBF00B7855B /* CalculateSolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateSolModel.swift; sourceTree = "<group>"; };
 		32D66D7129E423BD005D8789 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		32D66D7329E4240A005D8789 /* InfinityCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityCarousel.swift; sourceTree = "<group>"; };
 		32D66D7529E576CB005D8789 /* Helvetica Neue.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Neue.ttf"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				32D66D8929E6F16F005D8789 /* ContentVewModel.swift */,
 				32D66D9A29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift */,
+				32CF697529F7DCBF00B7855B /* CalculateSolModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */,
 				32D66D8C29E8061B005D8789 /* SettingButton.swift in Sources */,
 				32D66D8529E6F08C005D8789 /* RequestData.swift in Sources */,
+				32CF697629F7DCBF00B7855B /* CalculateSolModel.swift in Sources */,
 				32D66D8129E6F037005D8789 /* DecodeJson.swift in Sources */,
 				32D66D7F29E6DF03005D8789 /* CustomNavigationView.swift in Sources */,
 				32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */,
@@ -482,6 +486,7 @@
 				DEVELOPMENT_TEAM = P87Y98S683;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarsRovers/Resourses/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mars rovers";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -514,6 +519,7 @@
 				DEVELOPMENT_TEAM = P87Y98S683;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarsRovers/Resourses/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mars rovers";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

@@ -9,177 +9,139 @@ import SwiftUI
 
 struct CardRoverSettings: View {
     
-    var rover: Rover
-    var icon: Image
-    var height: CGFloat
+    @EnvironmentObject var calculateSol: CalculateSolModel
     @Binding var isSetting: Bool
-    @Binding var filter: Filter
     
+   // @State var labelFilter: String = ""
     
-    @State var labelFilter: String = ""
+   // @State var currentCamera: String = ""
     
+    var rover: Rover
+    var height: CGFloat
     
     var body: some View {
-        GeometryReader { proxy in
-            ZStack(alignment: .top) {
-                VStack(spacing: 0) {
-                    Image.starfield
-                        .resizable()
-                    Image.starfield
-                        .resizable()
-                        .rotationEffect(.degrees(180))
-                }
-                .mask(RoundedRectangle(cornerRadius: 13))
-                VStack(spacing: 10) {
-                    
-                    ZStack {
-                        Text(labelFilter)
-                            .customFont(size: 16)
-                            .fontWeight(.bold)
-                        HStack(spacing: 25)  {
-                            Button(action: {
-                                var transaction = Transaction(animation: .easeInOut(duration: 1))
-                                transaction.disablesAnimations = true
-                                withTransaction(transaction) {
-                                    print("\(filter.camera) \(filter.sol)")
-                                    if filter.camera != "" && filter.sol != -1 {
-                                        print("Correct")
-                                        self.isSetting.toggle()
-                                       
-//                                        if filter.camera == "" && filter.sol >= 0 {
-//                                            self.labelFilter = "Select camera"
-//                                        } else if filter.sol == -1 && filter.camera != "" {
-//                                            self.labelFilter = "Select Sol"
-//                                        } else if filter.camera == "" && filter.sol == -1 {
-//                                            self.labelFilter = "Select camera and Sol"
-//                                        } else {
-//                                            self.labelFilter = ""
-//                                        }
-                                    } else {
-                                        print("Select camera and Sol")
-                                       
-                                        
-                                    }
+        GeometryReader { _ in
+            VStack(spacing: 10) {
+                ZStack {
+                    Text("")
+                        .customFont(size: 16)
+                        .fontWeight(.bold)
+                    HStack(spacing: 25)  {
+                        Button(action: {
+                            DispatchQueue.main.async {
+                                withAnimation {
+                                    self.isSetting.toggle()
                                 }
-                            }) {
+                            }
+                        }) {
+                            HStack(spacing: 25) {
                                 Image.gear
                                     .iconSize(size: 30)
                                     .rotationEffect(Angle(degrees: isSetting ? -90 : 0))
                             }
-                            Spacer()
-                                .foregroundColor(.white)
                         }
+                        Spacer()
+                            .foregroundColor(.white)
                     }
-                    RoundedRectangle(cornerRadius: 1)
-                        .fill(Color.b_555555)
-                        .frame(height: 2)
-                    SettingRover(title: "Sol \(rover.maxSol)",
-                                 maxSol: rover.maxSol,
-                                 image: .sun, filter: $filter)
-                    SelectCamera(title: "Cameras",
-                                 data: "", image: .camera,
-                                 cameras: rover.cameras, filter: $filter)
                 }
-                .padding(.horizontal, 26)
-                .padding(.top, 15)
-                .foregroundColor(.white)
+                RoundedRectangle(cornerRadius: 1)
+                    .fill(Color.b_555555)
+                    .frame(height: 2)
+                SettingRover(isSetting: $isSetting, cameras: rover.cameras)
             }
+            .padding(.horizontal, 26)
+            .padding(.top, 15)
+            .foregroundColor(.white)
         }
         .frame(height: height * 1.6)
+        .background(
+            VStack(spacing: 0) {
+                Image.starfield
+                    .resizable()
+                Image.starfield
+                    .resizable()
+                    .rotationEffect(.degrees(180))
+            }
+                .mask(RoundedRectangle(cornerRadius: 13))
+            
+        )
     }
 }
-
-
 
 
 struct SettingRover: View {
     
     @ObservedObject var SettingVM: CardRoverSettingsVeiwModel = CardRoverSettingsVeiwModel()
+    @EnvironmentObject var calculateSol: CalculateSolModel
     
-    var title: String
-    var maxSol: Int
-    var image: Image
+    @Binding var isSetting: Bool
     
-    @State var isActiveParam: Bool = false
+    var cameras: [Camera]
     
-    @Binding var filter: Filter
-    
+    @State var camera: String = ""
     
     var body: some View {
         VStack() {
             HStack(spacing: 25) {
-                image
+                Image.sun
                     .iconSize(size: 30)
-                Text(title)
-                    .customFont(size: 16)
-                    .fontWeight(.bold)
-                Spacer()
-                Button(action: {
-                    DispatchQueue.main.async {
-                        self.isActiveParam.toggle()
-                        if isActiveParam {
-                            self.SettingVM.countNumbers(maxSol)
-                            self.SettingVM.breakNumberSol(maxSol)
-                        } else {
-                            filter.sol = self.answerCurrentSol(arraySol: SettingVM.breakSol, countSol: maxSol)
-                        }
-                    }
-                    //                    DispatchQueue.main.async {
-                    //                        self.SettingVM.countNumbers(maxSol)
-                    //                        self.SettingVM.breakNumberSol(maxSol)
-                    //                    }
-                }) {
-                    Text("\(String(filter.sol))")
+                VStack(alignment: .leading) {
+                    Text("Sol: ")
                         .customFont(size: 16)
                         .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(.trailing, 12)
+                    HStack(spacing: 0 ) {
+                        Text("Current sol: ")
+                            .customFont(size: 10)
+                            .fontWeight(.regular)
+                        showCurrentSol(size: 10, weight: .regular)
+                     }
                 }
-                .frame(width: 120, height: 27)
-                .background(Color.b_555555)
-                .cornerRadius(7)
+                Spacer()
+                showCurrentSol(size: 16, weight: .bold)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.trailing, 12)
+                    .frame(width: 120, height: 27)
+                    .background(Color.b_555555)
+                    .cornerRadius(7)
             }
-            VStack(spacing: 0) {
+            ScrollView(.vertical, showsIndicators: false) {
                 showWheel()
+                    .transaction { transaction in
+                        transaction.animation = nil
+                    }
+                showCameras()
             }
-            .onAppear() {
-                self.filter.sol = -1
-                self.filter.camera = ""
-            }
+
         }
     }
     
     @ViewBuilder
     func showWheel() -> some View {
-        if isActiveParam == true {
             HStack(spacing: 10) {
-                ForEach(0..<SettingVM.countForPicker, id: \.self) { index in
-                    SelectWheel(selector: $SettingVM.breakSol[index],
-                                iteration: index)
+                ForEach(0..<calculateSol.countPicker, id: \.self) { index in
+                    SelectWheel(selector: $calculateSol.breakSol[index], iteration: index)
                 }
             }
-        } else {
-            Text("1")
+    }
+    
+    @ViewBuilder
+    func showCurrentSol(size: CGFloat, weight: Font.Weight) -> some View {
+        HStack(spacing: 0) {
+            ForEach(SettingVM.breakSol.indices, id: \.self) { elem in
+                Text("\(SettingVM.breakSol[elem])")
+                    .customFont(size: size)
+                    .fontWeight(weight)
+            }
         }
     }
     
-    
-    func answerCurrentSol(arraySol: [Int], countSol: Int) -> Int {
-        var myString = ""
-        _ = arraySol.map{
-            myString = myString + "\($0)"
-        }
-        var currentNumber = Int(myString)
-        guard let currentSol = currentNumber else {
-            return countSol
-        }
-        if currentSol > countSol {
-            return countSol
-        }
-        print(countSol)
-        print(currentSol)
-        return currentSol
+    @ViewBuilder
+    func showCameras() -> some View {
+            SelectCamera(title: "filter.camera",
+                         cameras: cameras,
+                         camera: $camera)
     }
+    
 }
 
 
@@ -205,30 +167,27 @@ struct SelectWheel: View {
     }
 }
 
-
 struct SelectCamera: View {
     
     var title: String
-    var data: String
-    var image: Image
     var cameras: [Camera]
     
-    @Binding var filter: Filter
+    @Binding var camera: String
     
-    @State var currentIndex: Int = -1
+    @State var indexCamera: Int = 0
     
     var body: some View {
         HStack(alignment: .top, spacing: 25) {
             HStack(alignment: .center, spacing: 25) {
-                image
+                Image.camera
                     .iconSize(size: 30)
                 VStack(alignment: .leading, spacing: 0) {
                     Text(title)
                         .customFont(size: 16)
                         .fontWeight(.bold)
-                    Text("Camera: \(filter.camera)")
+                    Text("Camera: \(camera)")
                         .customFont(size: 10)
-                        .foregroundColor(.w_FFFFFF_40)
+                        .foregroundColor(.white)
                         .fontWeight(.regular)
                 }
             }
@@ -236,7 +195,7 @@ struct SelectCamera: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 10) {
                     ForEach(cameras.indices, id: \.self) { item in
-                        ButtonCamera(title: cameras[item].name, index: item, currentIndex: $currentIndex, filter: $filter)
+                        ButtonCamera(title: cameras[item].name, index: item, currentIndex: $indexCamera, camera: $camera)
                     }
                 }
             }
@@ -245,19 +204,28 @@ struct SelectCamera: View {
     }
 }
 
-
 struct ButtonCamera: View {
     
     var title: String
     var index: Int = 0
     
     @Binding var currentIndex: Int
-    @Binding var filter: Filter
+    @Binding var camera: String
     
     var body: some View {
         Button(action: {
+            //            DispatchQueue.main.async {
+            //                withAnimation {
+            //                    self.currentIndex = index
+            //                    self.camera = title
+            //                }
+            //            }
+            //var transaction = Transaction(animation: .easeInOut(duration: 1))
+            //transaction.disablesAnimations = true
+            //withTransaction(transaction) {
             self.currentIndex = index
-            filter.camera = title
+            self.camera = title
+            // }
         }) {
             Text(title)
                 .customFont(size: 16)
@@ -272,6 +240,7 @@ struct ButtonCamera: View {
 }
 
 
+
 #if DEBUG
 struct CardRoverSettings_Previews: PreviewProvider {
     static var previews: some View {
@@ -279,3 +248,4 @@ struct CardRoverSettings_Previews: PreviewProvider {
     }
 }
 #endif
+

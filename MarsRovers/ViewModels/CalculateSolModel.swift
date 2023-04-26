@@ -1,23 +1,35 @@
 //
-//  CardRoverSettingsVeiwModel.swift
+//  CalculateSolModel.swift
 //  MarsRovers
 //
-//  Created by Steven Kirke on 15.04.2023.
+//  Created by Steven Kirke on 25.04.2023.
 //
 
 import Foundation
 
+struct Filter {
+    var roverName: String
+    var sol: Int
+    var tempSol: Int
+    var camera: String
+}
 
-class CardRoverSettingsVeiwModel: ObservableObject {
+class CalculateSolModel: ObservableObject {
     
-    @Published var countForPicker: Int = 0
+    
+    @Published var countPicker: Int = 0
     @Published var breakSol: [Int] = []
     @Published var tempSol = 0
-        
+    @Published var filterRover: Filter
     
-    func calculateSol(_ filter: Filter) {
+    init() {
+        filterRover =  Filter(roverName: "", sol: 0, tempSol: 0, camera: "")
+    }
+    
+    
+    func breakdownWheel(_ countSol: Int) {
         var count = 0
-        var num = filter.sol
+        var num = countSol
         if (num == 0) {
             return
         }
@@ -25,8 +37,9 @@ class CardRoverSettingsVeiwModel: ObservableObject {
             num = num / 10
             count += 1
         }
-        self.countForPicker = count
-        breakNumberSol(filter.sol)
+        self.countPicker = count
+        print("Count - \(count)")
+        breakNumberSol(countSol)
     }
     
     private func breakNumberSol(_ currentSol: Int) {
@@ -38,8 +51,6 @@ class CardRoverSettingsVeiwModel: ObservableObject {
             }
         }
     }
-    
-    
     
     func saveCurrentSol(maxSol: Int) -> Int {
         var myString = ""
@@ -56,5 +67,17 @@ class CardRoverSettingsVeiwModel: ObservableObject {
         return currentSol
     }
     
-
 }
+
+
+//private func initFilter() {
+//        guard let rover = self.rovers.rovers.first else {
+//            return
+//        }
+//        guard let firstCamera = rover.cameras.first?.name else {
+//            return
+//        }
+//        calculateSol.filterRover.roverName = rover.name.lowercased()
+//        calculateSol.filterRover.sol = rover.maxSol
+//        calculateSol.filterRover.camera = firstCamera
+//}
