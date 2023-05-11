@@ -27,8 +27,10 @@ struct CustomNavigationView<Content: View>: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .padding(.top, 15)
-                    HStack {
+                    HStack() {
                         content
+                            .foregroundColor(.white)
+                            .offset(y: 8)
                         Image.logo
                             .iconSize(size: 60)
                             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -46,7 +48,11 @@ struct CustomNavigationView<Content: View>: View {
 #if DEBUG
 struct CustomNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CustomNavigationView(title: "Settings",
+                             content:         Button(action: {}) {
+            Image(systemName: "chevron.backward")
+                .font(.system(size: 20, weight: .bold))
+        })
     }
 }
 #endif

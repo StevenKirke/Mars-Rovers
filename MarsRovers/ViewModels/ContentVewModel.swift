@@ -35,6 +35,7 @@ class ContentVewModel: ObservableObject {
     }
     
     init() {
+        //getData()
         getMock()
     }
     
@@ -71,7 +72,6 @@ class ContentVewModel: ObservableObject {
             
             guard let name = currentData.rovers.first?.name else {
                 return
-                
             }
             self.title = name
             

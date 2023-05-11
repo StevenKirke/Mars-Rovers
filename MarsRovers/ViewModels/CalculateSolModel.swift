@@ -38,7 +38,6 @@ class CalculateSolModel: ObservableObject {
             count += 1
         }
         self.countPicker = count
-        print("Count - \(count)")
         breakNumberSol(countSol)
     }
     

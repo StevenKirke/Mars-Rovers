@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E1DD129E1FB7900D2165B /* ContentView.swift */; };
+		326129F729FEE3CF00879DCE /* PhotoDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */; };
+		326129F92A010D0D00879DCE /* ButtonForNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129F82A010D0D00879DCE /* ButtonForNavigation.swift */; };
+		326129FB2A01163D00879DCE /* RoverConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129FA2A01163D00879DCE /* RoverConnection.swift */; };
 		32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC529E1F8D5004F0852 /* AppDelegate.swift */; };
 		32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC729E1F8D5004F0852 /* SceneDelegate.swift */; };
 		32980DCA29E1F8D5004F0852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC929E1F8D5004F0852 /* ViewController.swift */; };
@@ -15,6 +18,12 @@
 		32980DCF29E1F8D6004F0852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32980DCE29E1F8D6004F0852 /* Assets.xcassets */; };
 		32980DD229E1F8D6004F0852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32980DD029E1F8D6004F0852 /* LaunchScreen.storyboard */; };
 		32CF697629F7DCBF00B7855B /* CalculateSolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF697529F7DCBF00B7855B /* CalculateSolModel.swift */; };
+		32CF697929F9360000B7855B /* WriteRover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF697829F9360000B7855B /* WriteRover.swift */; };
+		32CF697C29F936DE00B7855B /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF697B29F936DE00B7855B /* PhotosView.swift */; };
+		32CF697E29FA724400B7855B /* RoundedCornersShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF697D29FA724400B7855B /* RoundedCornersShape.swift */; };
+		32CF698229FA7D6000B7855B /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF698129FA7D6000B7855B /* PhotosViewModel.swift */; };
+		32CF698429FAE00400B7855B /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF698329FAE00400B7855B /* Photos.swift */; };
+		32CF698629FAE8E000B7855B /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF698529FAE8E000B7855B /* CustomImage.swift */; };
 		32D66D7229E423BD005D8789 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7129E423BD005D8789 /* Images.swift */; };
 		32D66D7429E4240A005D8789 /* InfinityCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D7329E4240A005D8789 /* InfinityCarousel.swift */; };
 		32D66D7629E576CB005D8789 /* Helvetica Neue.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32D66D7529E576CB005D8789 /* Helvetica Neue.ttf */; };
@@ -33,13 +42,15 @@
 		32D66D9529E967F1005D8789 /* Rovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9429E967F1005D8789 /* Rovers.swift */; };
 		32D66D9729E97314005D8789 /* CardRoverDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9629E97314005D8789 /* CardRoverDescription.swift */; };
 		32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */; };
-		32D66D9B29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9A29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift */; };
 		32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */; };
 		32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEBFCF29E2DFE8002D4499 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		323E1DD129E1FB7900D2165B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDescriptionView.swift; sourceTree = "<group>"; };
+		326129F82A010D0D00879DCE /* ButtonForNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonForNavigation.swift; sourceTree = "<group>"; };
+		326129FA2A01163D00879DCE /* RoverConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverConnection.swift; sourceTree = "<group>"; };
 		32980DC229E1F8D5004F0852 /* MarsRovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsRovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32980DC529E1F8D5004F0852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32980DC729E1F8D5004F0852 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +60,12 @@
 		32980DD129E1F8D6004F0852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32980DD329E1F8D6004F0852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32CF697529F7DCBF00B7855B /* CalculateSolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateSolModel.swift; sourceTree = "<group>"; };
+		32CF697829F9360000B7855B /* WriteRover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRover.swift; sourceTree = "<group>"; };
+		32CF697B29F936DE00B7855B /* PhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
+		32CF697D29FA724400B7855B /* RoundedCornersShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersShape.swift; sourceTree = "<group>"; };
+		32CF698129FA7D6000B7855B /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
+		32CF698329FAE00400B7855B /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		32CF698529FAE8E000B7855B /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		32D66D7129E423BD005D8789 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		32D66D7329E4240A005D8789 /* InfinityCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityCarousel.swift; sourceTree = "<group>"; };
 		32D66D7529E576CB005D8789 /* Helvetica Neue.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica Neue.ttf"; sourceTree = "<group>"; };
@@ -67,7 +84,6 @@
 		32D66D9429E967F1005D8789 /* Rovers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rovers.swift; sourceTree = "<group>"; };
 		32D66D9629E97314005D8789 /* CardRoverDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverDescription.swift; sourceTree = "<group>"; };
 		32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverSettings.swift; sourceTree = "<group>"; };
-		32D66D9A29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverSettingsVeiwModel.swift; sourceTree = "<group>"; };
 		32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nasa.ttf; sourceTree = "<group>"; };
 		32FEBFCF29E2DFE8002D4499 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,11 +99,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		326129F529FEE3A100879DCE /* PhotoDescriptionView */ = {
+			isa = PBXGroup;
+			children = (
+				326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */,
+			);
+			path = PhotoDescriptionView;
+			sourceTree = "<group>";
+		};
 		3262BB7929E1FB14001214F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				32FEBFC529E2DC17002D4499 /* MainView */,
 				32FEBFCC29E2DDB9002D4499 /* ContentView */,
+				32CF697A29F9364000B7855B /* PhotosView */,
+				326129F529FEE3A100879DCE /* PhotoDescriptionView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -119,16 +145,51 @@
 				32FEBFC629E2DC29002D4499 /* Networking */,
 				32FEBFC729E2DC36002D4499 /* Extensions */,
 				32FEBFCB29E2DD13002D4499 /* Enums */,
+				32CF697729F935E600B7855B /* protocols */,
 				32FEBFC929E2DC59002D4499 /* Application */,
 				32FEBFC329E2DBED002D4499 /* Resourses */,
 			);
 			path = MarsRovers;
 			sourceTree = "<group>";
 		};
+		32CF697729F935E600B7855B /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				32CF697829F9360000B7855B /* WriteRover.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		32CF697A29F9364000B7855B /* PhotosView */ = {
+			isa = PBXGroup;
+			children = (
+				32CF697B29F936DE00B7855B /* PhotosView.swift */,
+			);
+			path = PhotosView;
+			sourceTree = "<group>";
+		};
+		32CF697F29FA7D2900B7855B /* ContentViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				32D66D8929E6F16F005D8789 /* ContentVewModel.swift */,
+				32CF697529F7DCBF00B7855B /* CalculateSolModel.swift */,
+			);
+			name = ContentViewModels;
+			sourceTree = "<group>";
+		};
+		32CF698029FA7D4100B7855B /* PhotosViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				32CF698129FA7D6000B7855B /* PhotosViewModel.swift */,
+			);
+			name = PhotosViewModels;
+			sourceTree = "<group>";
+		};
 		32D66D8629E6F0B8005D8789 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				32D66D8729E6F130005D8789 /* Rover.swift */,
+				32CF698329FAE00400B7855B /* Photos.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -154,9 +215,8 @@
 		32FEBFC429E2DBFE002D4499 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				32D66D8929E6F16F005D8789 /* ContentVewModel.swift */,
-				32D66D9A29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift */,
-				32CF697529F7DCBF00B7855B /* CalculateSolModel.swift */,
+				32CF697F29FA7D2900B7855B /* ContentViewModels */,
+				32CF698029FA7D4100B7855B /* PhotosViewModels */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -198,6 +258,10 @@
 				32D66D7A29E6D3C9005D8789 /* Sceleton.swift */,
 				32D66D7E29E6DF03005D8789 /* CustomNavigationView.swift */,
 				32D66D8B29E8061B005D8789 /* SettingButton.swift */,
+				32CF697D29FA724400B7855B /* RoundedCornersShape.swift */,
+				32CF698529FAE8E000B7855B /* CustomImage.swift */,
+				326129F82A010D0D00879DCE /* ButtonForNavigation.swift */,
+				326129FA2A01163D00879DCE /* RoverConnection.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -314,27 +378,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32CF698429FAE00400B7855B /* Photos.swift in Sources */,
 				32D66D9229E843C6005D8789 /* String.swift in Sources */,
 				32D66D9029E831C7005D8789 /* RoverImages.swift in Sources */,
 				32980DCA29E1F8D5004F0852 /* ViewController.swift in Sources */,
 				32D66D7D29E6DCC2005D8789 /* Colors.swift in Sources */,
 				32D66D9729E97314005D8789 /* CardRoverDescription.swift in Sources */,
+				32CF698229FA7D6000B7855B /* PhotosViewModel.swift in Sources */,
 				32D66D9529E967F1005D8789 /* Rovers.swift in Sources */,
 				32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */,
 				323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */,
 				32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */,
 				32D66D7429E4240A005D8789 /* InfinityCarousel.swift in Sources */,
-				32D66D9B29EB3F4D005D8789 /* CardRoverSettingsVeiwModel.swift in Sources */,
 				32D66D8829E6F130005D8789 /* Rover.swift in Sources */,
+				32CF697C29F936DE00B7855B /* PhotosView.swift in Sources */,
+				32CF698629FAE8E000B7855B /* CustomImage.swift in Sources */,
 				32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */,
 				32D66D8C29E8061B005D8789 /* SettingButton.swift in Sources */,
 				32D66D8529E6F08C005D8789 /* RequestData.swift in Sources */,
+				326129F729FEE3CF00879DCE /* PhotoDescriptionView.swift in Sources */,
 				32CF697629F7DCBF00B7855B /* CalculateSolModel.swift in Sources */,
 				32D66D8129E6F037005D8789 /* DecodeJson.swift in Sources */,
 				32D66D7F29E6DF03005D8789 /* CustomNavigationView.swift in Sources */,
 				32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */,
 				32D66D7B29E6D3C9005D8789 /* Sceleton.swift in Sources */,
+				32CF697929F9360000B7855B /* WriteRover.swift in Sources */,
+				326129F92A010D0D00879DCE /* ButtonForNavigation.swift in Sources */,
 				32D66D8329E6F053005D8789 /* ResponseData.swift in Sources */,
+				326129FB2A01163D00879DCE /* RoverConnection.swift in Sources */,
+				32CF697E29FA724400B7855B /* RoundedCornersShape.swift in Sources */,
 				32D66D7229E423BD005D8789 /* Images.swift in Sources */,
 				32D66D8A29E6F16F005D8789 /* ContentVewModel.swift in Sources */,
 			);

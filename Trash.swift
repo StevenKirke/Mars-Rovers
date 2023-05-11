@@ -134,6 +134,27 @@ func showWheel() -> some View {
      self.SettingVM.countNumbers(maxSol)
      self.SettingVM.breakNumberSol(maxSol)
  }
+
+ VStack(alignment: .leading, spacing: 5) {
+    Text("\(filter.roverName)")
+        .customFont(size: 8)
+        .fontWeight(.regular)
+    Text("\(String(filter.sol))")
+        .customFont(size: 8)
+        .fontWeight(.regular)
+    Text("\(filter.camera) \(String(isSetting))")
+        .customFont(size: 8)
+        .fontWeight(.regular)
+}
+
+var transaction = Transaction(animation: .easeInOut(duration: 1))
+transaction.disablesAnimations = true
+withTransaction(transaction) {
+
+}
+                    //Text("\(String(self.answerCurrentSol(arraySol: SettingVM.breakSol, countSol: maxSol)))")
+                    // .customFont(size: 16)
+                    // .fontWeight(.bold)
  
  // self.isActiveParam.toggle()
  /*

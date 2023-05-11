@@ -10,6 +10,9 @@ import SwiftUI
 
 struct CardRoverDescription: View {
     
+    @EnvironmentObject var calculateSol: CalculateSolModel
+    
+    @State var isGallery: Bool = false
     @Binding var isSetting: Bool
     
     var rover: Rover
@@ -20,7 +23,7 @@ struct CardRoverDescription: View {
     var body: some View {
         GeometryReader { proxy in
             VStack(spacing: 10) {
-                HStack(spacing: 25)  {
+                HStack(spacing: 25) {
                     Button(action: {
                         DispatchQueue.main.async {
                             withAnimation {
@@ -35,6 +38,24 @@ struct CardRoverDescription: View {
                         }
                     }
                     Spacer()
+                    NavigationLink(destination: PhotosView(), isActive: $isGallery) {
+                        Button(action: {
+                            DispatchQueue.main.async {
+                                withAnimation {
+                                    print("\(calculateSol.filterRover)")
+                                    self.isGallery = true
+                                }
+                            }
+                        }) {
+                            HStack(spacing: 11) {
+                                Text("Show photos")
+                                    .customFont(size: 16)
+                                    .fontWeight(.regular)
+                                Image(systemName: "chevron.forward")
+                                    .font(.system(size: 16, weight: .regular))
+                            }
+                        }
+                    }
                 }
                 RoundedRectangle(cornerRadius: 1)
                     .fill(Color.b_555555)
@@ -65,7 +86,8 @@ struct CardRoverDescription: View {
         .frame(height: height)
         .background(Image.starfield
             .resizable()
-            .mask(RoundedRectangle(cornerRadius: 13))
+            .mask(RoundedCornersShape(corners: [.topLeft, .topRight], radius: 13)
+                .fill(Color.white))
         )
     }
 }
@@ -98,4 +120,5 @@ struct CardRoverDescription_Previews: PreviewProvider {
     }
 }
 #endif
+
 

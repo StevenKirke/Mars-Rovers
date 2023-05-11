@@ -28,6 +28,12 @@ extension Image {
         case doc
     }
     
+    enum AnimIcon: String {
+        case IconAerialAnim
+        case IconEarthAnim
+        case IconRoverAnim
+    }
+    
     
     enum LittleIcon: String {
         case IconCuriosity
@@ -49,6 +55,10 @@ extension Image {
     }
     
     init(_ name: Image.Icons) {
+        self.init(name.path)
+    }
+    
+    init(_ name: Image.AnimIcon) {
         self.init(name.path)
     }
     
@@ -78,6 +88,10 @@ extension Image {
     static let sun = Image(Icons.sun)
     static let doc = Image(Icons.doc)
     
+    static let aerialAnim = Image(AnimIcon.IconAerialAnim)
+    static let roverAnim = Image(AnimIcon.IconRoverAnim)
+    static let earthAnim = Image(AnimIcon.IconEarthAnim)
+    
     static let iconCuriosity = Image(LittleIcon.IconCuriosity)
     static let iconPerseverance = Image(LittleIcon.IconPerseverance)
     static let iconSpirit = Image(LittleIcon.IconSpirit)
@@ -103,6 +117,12 @@ extension Image.Icons {
 extension Image.LittleIcon {
     var path: String {
         "Images/LittleIcons/\(rawValue)"
+    }
+}
+
+extension Image.AnimIcon {
+    var path: String {
+        "Images/IconForAnim/\(rawValue)"
     }
 }
 
