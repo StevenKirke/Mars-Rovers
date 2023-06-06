@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3202F4382A0DBCF200259B58 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3202F4372A0DBCF200259B58 /* Views.swift */; };
+		3202F43A2A0DBD2100259B58 /* AnimateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3202F4392A0DBD2100259B58 /* AnimateObserver.swift */; };
+		3205789C2A0E6920002B870B /* PhotosWithCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3205789B2A0E6920002B870B /* PhotosWithCamera.swift */; };
 		323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E1DD129E1FB7900D2165B /* ContentView.swift */; };
 		326129F729FEE3CF00879DCE /* PhotoDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */; };
 		326129F92A010D0D00879DCE /* ButtonForNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129F82A010D0D00879DCE /* ButtonForNavigation.swift */; };
 		326129FB2A01163D00879DCE /* RoverConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129FA2A01163D00879DCE /* RoverConnection.swift */; };
+		326A31712A2BB0BE00B607B7 /* EarthAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A31702A2BB0BE00B607B7 /* EarthAnim.swift */; };
 		32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC529E1F8D5004F0852 /* AppDelegate.swift */; };
 		32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC729E1F8D5004F0852 /* SceneDelegate.swift */; };
 		32980DCA29E1F8D5004F0852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32980DC929E1F8D5004F0852 /* ViewController.swift */; };
@@ -42,15 +46,21 @@
 		32D66D9529E967F1005D8789 /* Rovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9429E967F1005D8789 /* Rovers.swift */; };
 		32D66D9729E97314005D8789 /* CardRoverDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9629E97314005D8789 /* CardRoverDescription.swift */; };
 		32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */; };
+		32EE00AF2A2E1C3300A2F605 /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00AE2A2E1C3300A2F605 /* Urls.swift */; };
+		32EE00B12A2E44C100A2F605 /* DimensionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00B02A2E44C100A2F605 /* DimensionAnimation.swift */; };
 		32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */; };
 		32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEBFCF29E2DFE8002D4499 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3202F4372A0DBCF200259B58 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		3202F4392A0DBD2100259B58 /* AnimateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateObserver.swift; sourceTree = "<group>"; };
+		3205789B2A0E6920002B870B /* PhotosWithCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosWithCamera.swift; sourceTree = "<group>"; };
 		323E1DD129E1FB7900D2165B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDescriptionView.swift; sourceTree = "<group>"; };
 		326129F82A010D0D00879DCE /* ButtonForNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonForNavigation.swift; sourceTree = "<group>"; };
 		326129FA2A01163D00879DCE /* RoverConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverConnection.swift; sourceTree = "<group>"; };
+		326A31702A2BB0BE00B607B7 /* EarthAnim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthAnim.swift; sourceTree = "<group>"; };
 		32980DC229E1F8D5004F0852 /* MarsRovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsRovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32980DC529E1F8D5004F0852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32980DC729E1F8D5004F0852 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +94,8 @@
 		32D66D9429E967F1005D8789 /* Rovers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rovers.swift; sourceTree = "<group>"; };
 		32D66D9629E97314005D8789 /* CardRoverDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverDescription.swift; sourceTree = "<group>"; };
 		32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverSettings.swift; sourceTree = "<group>"; };
+		32EE00AE2A2E1C3300A2F605 /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
+		32EE00B02A2E44C100A2F605 /* DimensionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionAnimation.swift; sourceTree = "<group>"; };
 		32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nasa.ttf; sourceTree = "<group>"; };
 		32FEBFCF29E2DFE8002D4499 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				32D66D9429E967F1005D8789 /* Rovers.swift */,
+				3205789B2A0E6920002B870B /* PhotosWithCamera.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -247,6 +260,7 @@
 				32D66D7129E423BD005D8789 /* Images.swift */,
 				32D66D7C29E6DCC2005D8789 /* Colors.swift */,
 				32D66D9129E843C6005D8789 /* String.swift */,
+				3202F4372A0DBCF200259B58 /* Views.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -262,6 +276,9 @@
 				32CF698529FAE8E000B7855B /* CustomImage.swift */,
 				326129F82A010D0D00879DCE /* ButtonForNavigation.swift */,
 				326129FA2A01163D00879DCE /* RoverConnection.swift */,
+				3202F4392A0DBD2100259B58 /* AnimateObserver.swift */,
+				326A31702A2BB0BE00B607B7 /* EarthAnim.swift */,
+				32EE00B02A2E44C100A2F605 /* DimensionAnimation.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -289,6 +306,7 @@
 		32FEBFCB29E2DD13002D4499 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				32EE00AE2A2E1C3300A2F605 /* Urls.swift */,
 				32D66D8F29E831C7005D8789 /* RoverImages.swift */,
 			);
 			path = Enums;
@@ -383,6 +401,7 @@
 				32D66D9029E831C7005D8789 /* RoverImages.swift in Sources */,
 				32980DCA29E1F8D5004F0852 /* ViewController.swift in Sources */,
 				32D66D7D29E6DCC2005D8789 /* Colors.swift in Sources */,
+				326A31712A2BB0BE00B607B7 /* EarthAnim.swift in Sources */,
 				32D66D9729E97314005D8789 /* CardRoverDescription.swift in Sources */,
 				32CF698229FA7D6000B7855B /* PhotosViewModel.swift in Sources */,
 				32D66D9529E967F1005D8789 /* Rovers.swift in Sources */,
@@ -397,17 +416,22 @@
 				32D66D8C29E8061B005D8789 /* SettingButton.swift in Sources */,
 				32D66D8529E6F08C005D8789 /* RequestData.swift in Sources */,
 				326129F729FEE3CF00879DCE /* PhotoDescriptionView.swift in Sources */,
+				3202F43A2A0DBD2100259B58 /* AnimateObserver.swift in Sources */,
 				32CF697629F7DCBF00B7855B /* CalculateSolModel.swift in Sources */,
+				3202F4382A0DBCF200259B58 /* Views.swift in Sources */,
 				32D66D8129E6F037005D8789 /* DecodeJson.swift in Sources */,
 				32D66D7F29E6DF03005D8789 /* CustomNavigationView.swift in Sources */,
 				32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */,
 				32D66D7B29E6D3C9005D8789 /* Sceleton.swift in Sources */,
+				32EE00AF2A2E1C3300A2F605 /* Urls.swift in Sources */,
 				32CF697929F9360000B7855B /* WriteRover.swift in Sources */,
 				326129F92A010D0D00879DCE /* ButtonForNavigation.swift in Sources */,
 				32D66D8329E6F053005D8789 /* ResponseData.swift in Sources */,
+				3205789C2A0E6920002B870B /* PhotosWithCamera.swift in Sources */,
 				326129FB2A01163D00879DCE /* RoverConnection.swift in Sources */,
 				32CF697E29FA724400B7855B /* RoundedCornersShape.swift in Sources */,
 				32D66D7229E423BD005D8789 /* Images.swift in Sources */,
+				32EE00B12A2E44C100A2F605 /* DimensionAnimation.swift in Sources */,
 				32D66D8A29E6F16F005D8789 /* ContentVewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

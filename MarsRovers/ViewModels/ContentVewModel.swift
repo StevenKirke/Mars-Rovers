@@ -16,12 +16,7 @@ struct ImagesRovers {
 
 class ContentVewModel: ObservableObject {
     
-    
-    var apiKey: String = "PN6lrB0EfMLX8Gfc8JVyOyOmL56BLLaxZg1A5aAZ"
-    var url: String = "https://api.nasa.gov/mars-photos/api/v1/rovers"
-    
     var requestData: RequestData = RequestData()
-    
     
     @Published var isSetting: Bool = false
     @Published var rovers: Rovers = Rovers(rovers: [])
@@ -35,12 +30,13 @@ class ContentVewModel: ObservableObject {
     }
     
     init() {
-        //getData()
-        getMock()
+        getData()
+        //getMock()
     }
     
     
     private func assamblyURL(url: String, key: String, value: String) -> URLRequest? {
+        print("URL - \(url)")
         guard var currentUrl = URL(string: url) else {
             print("Error convert URL")
             return nil
@@ -53,7 +49,7 @@ class ContentVewModel: ObservableObject {
     
     
     private func getData() {
-        let request = assamblyURL(url: url, key: "api_key", value: apiKey)
+        let request = assamblyURL(url: URLS.mainUrl.url, key: "api_key", value: URLS.apiKey.url)
         guard let currentRequest = request else {
             return
         }

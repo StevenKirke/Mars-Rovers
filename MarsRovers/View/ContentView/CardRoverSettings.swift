@@ -12,6 +12,7 @@ struct CardRoverSettings: View {
     @Binding var isSetting: Bool
     var rover: Rover
     var height: CGFloat
+
     
     var body: some View {
         GeometryReader { _ in
@@ -40,7 +41,7 @@ struct CardRoverSettings: View {
             .padding(.top, 15)
             .foregroundColor(.white)
         }
-        .frame(height: height * 1.6)
+        .frame(height: height)
         .background(
             VStack(spacing: 0) {
                 Image.starfield

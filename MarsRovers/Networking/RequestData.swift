@@ -15,7 +15,6 @@ class RequestData {
     func getData<T: Decodable>(request: URLRequest, model: T, returnData: @escaping (T?, String?) -> Void) {
         let dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
             if let error = error {
-                print("Error answer request: ", error)
                 return
             }
             guard let data = data else {

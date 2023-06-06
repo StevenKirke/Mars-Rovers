@@ -14,51 +14,44 @@ struct PhotosView: View {
     
     @ObservedObject var PhotosVM: PhotosViewModel = PhotosViewModel()
     
-    var photoUrlMock: [String] = [
-        "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03796/opgs/edr/fcam/FLB_734489783EDR_F1002454FHAZ00302M_.JPG",
-        "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03796/opgs/edr/fcam/FRB_734489783EDR_F1002454FHAZ00302M_.JPG",
-        "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03796/opgs/edr/fcam/FLB_734483654EDR_F1002208FHAZ00200M_.JPG",
-        "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03796/opgs/edr/fcam/FLB_734474426EDR_F1002208FHAZ00200M_.JPG",
-        "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03796/opgs/edr/fcam/FLB_734474133EDR_F1002208FHAZ00200M_.JPG"
-    ]
-    
     var name: String {
         calculateSol.filterRover.roverName
     }
     
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .bottom) {
-                Color.black.opacity(0.25)
-                VStack(spacing: 0) {
-                    CustomNavigationView(title: name,
-                                         content: ButtonForNavigation(action: {
-                        DispatchQueue.main.async {
-                            withAnimation {
-                                self.returnSettings.wrappedValue.dismiss()
-                            }
-                        }
-                    }))
+        GeometryReader { geo in
+            let saveAreaTop = geo.safeAreaInsets.top
+            NavigationView {
+                ZStack(alignment: .bottom) {
+                    Color.black.opacity(0.25)
                     VStack(spacing: 0) {
-                        ScrollView(.vertical, showsIndicators: false) {
-                            let currentWidth = UIScreen.main.bounds.width - 22
-                            let size: CGSize = .init(width: currentWidth, height: calcHeight(width: currentWidth))
-                            ForEach(PhotosVM.photos.photos.indices, id: \.self) { index in
-                                let currentCard = PhotosVM.photos.photos[index].imgSrc
-                                CardPhoto(image: currentCard, size: size)
+                        CustomNavigationView(title: name, height: saveAreaTop,
+                                             content: ButtonForNavigation(action: {
+                            DispatchQueue.main.async {
+                                withAnimation {
+                                    self.returnSettings.wrappedValue.dismiss()
+                                }
                             }
+                        }))
+                        VStack(spacing: 0) {
+                            ScrollView(.vertical, showsIndicators: false) {
+                                let currentWidth = UIScreen.main.bounds.width - 22
+                                let size: CGSize = .init(width: currentWidth, height: calcHeight(width: currentWidth))
+                                ForEach(PhotosVM.photos.photos.indices, id: \.self) { index in
+                                    let currentCard = PhotosVM.photos.photos[index].imgSrc
+                                    CardPhoto(image: currentCard, size: size)
+                                }
+                            }
+                            .mask(RoundedRectangle(cornerRadius: 13))
+                            .padding(.top, -saveAreaTop + 10)
+                            .padding(.bottom, 10)
                         }
-                        .mask(RoundedRectangle(cornerRadius: 13))
-                        .padding(.top, 8)
-                        .padding(.bottom, 15)
-                        
                     }
                 }
-            }
-            .edgesIgnoringSafeArea(.all)
-            .onAppear() {
-                print("calculateSol - \(calculateSol.filterRover)")
-                PhotosVM.getPhoto(rover: calculateSol.filterRover)
+                .edgesIgnoringSafeArea(.bottom)
+                .onAppear() {
+                    PhotosVM.getPhoto(rover: calculateSol.filterRover)
+                }
             }
         }
         .navigationBarTitle("", displayMode: .inline)
@@ -72,17 +65,6 @@ struct PhotosView: View {
     }
 }
 
-struct InfoBlock: View {
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            Text("Name: Cariosity")
-            Text("Sol: 423")
-            Text("Camera: NAVCAM_LEFT")
-        }
-    }
-    
-}
 
 struct CardPhoto: View {
     

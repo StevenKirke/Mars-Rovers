@@ -11,6 +11,7 @@ import SwiftUI
 struct CustomNavigationView<Content: View>: View {
     
     var title: String
+    var height: CGFloat
     var content: Content
     
     var body: some View {
@@ -18,7 +19,7 @@ struct CustomNavigationView<Content: View>: View {
             Image.starfield
                 .resizable()
                 .scaledToFill()
-                .frame(maxHeight: 90)
+                .frame(maxHeight: height >= 30 ? 90 : 70)
                 .mask(Rectangle())
             HStack(spacing: 0) {
                 ZStack {
@@ -48,11 +49,12 @@ struct CustomNavigationView<Content: View>: View {
 #if DEBUG
 struct CustomNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomNavigationView(title: "Settings",
-                             content:         Button(action: {}) {
-            Image(systemName: "chevron.backward")
-                .font(.system(size: 20, weight: .bold))
-        })
+//        CustomNavigationView(title: "Settings", height: 90,
+//                             content:         Button(action: {}) {
+//            Image(systemName: "chevron.backward")
+//                .font(.system(size: 20, weight: .bold))
+//        })
+        ContentView()
     }
 }
 #endif

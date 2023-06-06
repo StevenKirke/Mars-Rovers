@@ -23,25 +23,31 @@ struct PhotoDescriptionView: View {
     var photo: Image
     
     var body: some View {
-        VStack(spacing: 0) {
-            CustomNavigationView(title: "", content: ButtonForNavigation(action: {
-                DispatchQueue.main.async {
-                    withAnimation {
-                        self.returnPhotos.wrappedValue.dismiss()
+        GeometryReader { geo in
+            let saveAreaTop = geo.safeAreaInsets.top
+            VStack(spacing: 0) {
+                CustomNavigationView(title: "", height: saveAreaTop, content: ButtonForNavigation(action: {
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            self.returnPhotos.wrappedValue.dismiss()
+                        }
                     }
-                }
-            }))
-            GeometryReader { proxy in
-                ScrollView(.horizontal, showsIndicators: false) {
-                    photo
-                        .resizable()
-                        .scaledToFill()
-                        .scaleEffect(scale)
-                }
+                }))
+                //GeometryReader { proxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        photo
+                            .resizable()
+                            .scaledToFill()
+                            .scaleEffect(scale)
+                    }
+               // }
+            }
+            .onAppear() {
+                print("saveAreaTop - \(saveAreaTop)")
             }
         }
         .gesture(magnitification)
-        .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
     }

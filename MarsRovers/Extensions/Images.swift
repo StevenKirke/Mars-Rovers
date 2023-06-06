@@ -30,8 +30,9 @@ extension Image {
     
     enum AnimIcon: String {
         case IconAerialAnim
-        case IconEarthAnim
         case IconRoverAnim
+        case EarthCartIcon
+        case MarsCartIcon
     }
     
     
@@ -90,7 +91,8 @@ extension Image {
     
     static let aerialAnim = Image(AnimIcon.IconAerialAnim)
     static let roverAnim = Image(AnimIcon.IconRoverAnim)
-    static let earthAnim = Image(AnimIcon.IconEarthAnim)
+    static let earthCartAnim = Image(AnimIcon.EarthCartIcon)
+    static let marsCartAnim = Image(AnimIcon.MarsCartIcon)
     
     static let iconCuriosity = Image(LittleIcon.IconCuriosity)
     static let iconPerseverance = Image(LittleIcon.IconPerseverance)

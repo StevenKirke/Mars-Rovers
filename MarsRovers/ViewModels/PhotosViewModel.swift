@@ -13,16 +13,16 @@ class PhotosViewModel: ObservableObject {
     
     @Published var photos: Photos = Photos(photos: [])
     
-    var apiKey: String = "PN6lrB0EfMLX8Gfc8JVyOyOmL56BLLaxZg1A5aAZ"
     
     func assamblyURL(rover: Filter)  -> URLRequest?  {
-        let url = "https://api.nasa.gov/mars-photos/api/v1/rovers/" + rover.roverName + "/photos/"
+        //let url = "https://api.nasa.gov/mars-photos/api/v1/rovers/" + rover.roverName + "/photos/"
+        let url = URLS.assambly(rover.roverName).url
         guard var currentUrl = URL(string: url) else {
             print("Error convert URL")
             return nil
         }
 
-        currentUrl.append(queryItems: [URLQueryItem.init(name: "api_key", value: apiKey)])
+        currentUrl.append(queryItems: [URLQueryItem.init(name: "api_key", value: URLS.apiKey.url)])
         currentUrl.append(queryItems: [URLQueryItem.init(name: "sol", value: "\(rover.tempSol)")])
         if rover.camera != "" {
             currentUrl.append(queryItems: [URLQueryItem.init(name: "camera", value: rover.camera)])

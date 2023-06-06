@@ -24,25 +24,10 @@ struct CardRoverDescription: View {
         GeometryReader { proxy in
             VStack(spacing: 10) {
                 HStack(spacing: 25) {
-                    Button(action: {
-                        DispatchQueue.main.async {
-                            withAnimation {
-                                self.isSetting.toggle()
-                            }
-                        }
-                    }) {
-                        HStack(spacing: 25) {
-                            Image.gear
-                                .iconSize(size: 30)
-                                .rotationEffect(Angle(degrees: isSetting ? -90 : 0))
-                        }
-                    }
-                    Spacer()
                     NavigationLink(destination: PhotosView(), isActive: $isGallery) {
                         Button(action: {
                             DispatchQueue.main.async {
                                 withAnimation {
-                                    print("\(calculateSol.filterRover)")
                                     self.isGallery = true
                                 }
                             }
@@ -54,6 +39,20 @@ struct CardRoverDescription: View {
                                 Image(systemName: "chevron.forward")
                                     .font(.system(size: 16, weight: .regular))
                             }
+                        }
+                    }
+                    Spacer()
+                    Button(action: {
+                        DispatchQueue.main.async {
+                            withAnimation {
+                                self.isSetting.toggle()
+                            }
+                        }
+                    }) {
+                        HStack(spacing: 25) {
+                            Image.gear
+                                .iconSize(size: 30)
+                                .rotationEffect(Angle(degrees: isSetting ? -90 : 0))
                         }
                     }
                 }
