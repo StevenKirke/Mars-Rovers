@@ -47,7 +47,8 @@
 		32D66D9729E97314005D8789 /* CardRoverDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9629E97314005D8789 /* CardRoverDescription.swift */; };
 		32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */; };
 		32EE00AF2A2E1C3300A2F605 /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00AE2A2E1C3300A2F605 /* Urls.swift */; };
-		32EE00B12A2E44C100A2F605 /* DimensionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00B02A2E44C100A2F605 /* DimensionAnimation.swift */; };
+		32EE00B52A326EE600A2F605 /* OrbitGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00B42A326EE600A2F605 /* OrbitGenerate.swift */; };
+		32EE00B72A32891000A2F605 /* EllipseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00B62A32891000A2F605 /* EllipseTest.swift */; };
 		32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */; };
 		32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEBFCF29E2DFE8002D4499 /* Fonts.swift */; };
 /* End PBXBuildFile section */
@@ -95,7 +96,8 @@
 		32D66D9629E97314005D8789 /* CardRoverDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverDescription.swift; sourceTree = "<group>"; };
 		32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverSettings.swift; sourceTree = "<group>"; };
 		32EE00AE2A2E1C3300A2F605 /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
-		32EE00B02A2E44C100A2F605 /* DimensionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionAnimation.swift; sourceTree = "<group>"; };
+		32EE00B42A326EE600A2F605 /* OrbitGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitGenerate.swift; sourceTree = "<group>"; };
+		32EE00B62A32891000A2F605 /* EllipseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseTest.swift; sourceTree = "<group>"; };
 		32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nasa.ttf; sourceTree = "<group>"; };
 		32FEBFCF29E2DFE8002D4499 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,7 +280,8 @@
 				326129FA2A01163D00879DCE /* RoverConnection.swift */,
 				3202F4392A0DBD2100259B58 /* AnimateObserver.swift */,
 				326A31702A2BB0BE00B607B7 /* EarthAnim.swift */,
-				32EE00B02A2E44C100A2F605 /* DimensionAnimation.swift */,
+				32EE00B42A326EE600A2F605 /* OrbitGenerate.swift */,
+				32EE00B62A32891000A2F605 /* EllipseTest.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				32CF698229FA7D6000B7855B /* PhotosViewModel.swift in Sources */,
 				32D66D9529E967F1005D8789 /* Rovers.swift in Sources */,
 				32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */,
+				32EE00B72A32891000A2F605 /* EllipseTest.swift in Sources */,
 				323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */,
 				32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */,
 				32D66D7429E4240A005D8789 /* InfinityCarousel.swift in Sources */,
@@ -430,8 +434,8 @@
 				3205789C2A0E6920002B870B /* PhotosWithCamera.swift in Sources */,
 				326129FB2A01163D00879DCE /* RoverConnection.swift in Sources */,
 				32CF697E29FA724400B7855B /* RoundedCornersShape.swift in Sources */,
+				32EE00B52A326EE600A2F605 /* OrbitGenerate.swift in Sources */,
 				32D66D7229E423BD005D8789 /* Images.swift in Sources */,
-				32EE00B12A2E44C100A2F605 /* DimensionAnimation.swift in Sources */,
 				32D66D8A29E6F16F005D8789 /* ContentVewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

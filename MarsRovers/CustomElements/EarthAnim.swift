@@ -10,26 +10,28 @@ import SwiftUI
 struct EarthAnim: View {
     
     @State var isEarthCart: Bool = false
-    var sizeRover: CGFloat
+    
+    @Binding var scale: CGFloat
+    
+    var image: Image = Image.earthCartAnim
+    var radius: CGFloat = 150.0
+    var tiltAngle: Double = 23.44
     
     var body: some View {
             ZStack {
-                Image.earthCartAnim
+                image
                     .resizable()
                     .scaledToFit()
-                    .frame(width: sizeRover)
-                    .onAppear() {
-                        DispatchQueue.main.async {
-                            self.isEarthCart.toggle()
-                        }
-                    }
-                Image.earthCartAnim
+                    .frame(width: radius)
+                    .background(.gray)
+                image
                     .resizable()
                     .scaledToFit()
-                    .frame(width: sizeRover)
-                    .offset(x: sizeRover)
+                    .frame(width: radius)
+                    .background(.gray)
+                    .offset(x: -radius)
             }
-            .offset(x: isEarthCart ? -sizeRover : 0)
+            .offset(x: isEarthCart ? radius : 0)
             .animation(anim(), value: isEarthCart)
             .mask(
                 Circle()
@@ -41,18 +43,32 @@ struct EarthAnim: View {
                     .shadow(color: .black, radius: 5, x: 0, y: 0)
                     .mask(Circle())
             )
+            .frame(width: radius, height: radius)
+            .scaleEffect(x: scale, y: scale)
+            .onAppear() {
+                DispatchQueue.main.async {
+                    self.isEarthCart.toggle()
+                }
+            }
+            .rotationEffect(Angle(degrees: tiltAngle))
     }
     
     private func anim() -> Animation {
         return
-            .linear(duration: 5)
+            .linear(duration: 6)
             .repeatForever(autoreverses: false)
+    }
+    
+    private func animRepeat() -> Animation {
+        return
+            .linear(duration: 4)
+            .repeatForever(autoreverses: true)
     }
 }
 
 
 struct EarthAnim_Previews: PreviewProvider {
     static var previews: some View {
-        EarthAnim(sizeRover: 120)
+        EarthAnim(scale: .constant(1.0), radius: 250)
     }
 }

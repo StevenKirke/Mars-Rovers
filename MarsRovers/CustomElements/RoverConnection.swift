@@ -13,6 +13,7 @@ struct CardRoverConnect: View {
     var sizeRover: CGFloat = 120
     
     @State var scaleRover: Double = 0.5
+    @State var scale: CGFloat = 1
     
     var body: some View {
         HStack(spacing: 0) {
@@ -26,7 +27,7 @@ struct CardRoverConnect: View {
                     }
                 }
             Spacer()
-            EarthAnim(sizeRover: sizeRover)
+            EarthAnim(scale: $scale, image: Image.marsCartAnim, radius: sizeRover)
                 .offset(x: 0, y: -sizeRover / 3)
         }
         .padding(.horizontal, 20)
