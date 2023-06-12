@@ -33,6 +33,9 @@ extension Image {
         case IconRoverAnim
         case EarthCartIcon
         case MarsCartIcon
+        case CartEarthColor
+        case CartMarsColor
+        case CartSunColor
     }
     
     
@@ -93,6 +96,10 @@ extension Image {
     static let roverAnim = Image(AnimIcon.IconRoverAnim)
     static let earthCartAnim = Image(AnimIcon.EarthCartIcon)
     static let marsCartAnim = Image(AnimIcon.MarsCartIcon)
+    static let earthCart = Image(AnimIcon.CartEarthColor)
+    static let marsCart = Image(AnimIcon.CartMarsColor)
+    static let sunCart = Image(AnimIcon.CartSunColor)
+    
     
     static let iconCuriosity = Image(LittleIcon.IconCuriosity)
     static let iconPerseverance = Image(LittleIcon.IconPerseverance)

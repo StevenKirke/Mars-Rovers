@@ -7,10 +7,11 @@
 
 import SwiftUI
 
+
 struct OrbitGenerate: View {
     
     @State var isStart: Bool = false
-
+    
     @State var angleEarth: Double = 0.0
     @State var angleMars: Double = 0.0
     
@@ -27,18 +28,27 @@ struct OrbitGenerate: View {
     var radius: CGFloat = 150
     var gradientSun: Gradient = .init(colors: [.yellow, .yellow.opacity(1), .yellow.opacity(0.0)])
     
-    
     var body: some View {
         ZStack {
             Circle()
-                 .fill(RadialGradient(gradient: gradientSun,
+                .opacity(0)
+                .overlay(Circle()
+                    .trim(from: 0.0, to: 0.5)
+                    .fill(RadialGradient(gradient: Gradient(colors: [.yellow, .yellow.opacity(1), .yellow.opacity(0.0)]),
+                                         center: .center,
+                                         startRadius: 1,
+                                         endRadius: radius / 4))
+                )
+                .scaleEffect(0.8)
+                .frame(width: radius / 2)
+            Circle()
+                .fill(RadialGradient(gradient: gradientSun,
                                      center: .center,
                                      startRadius: 1,
-                                     endRadius: radius / 2))
-                .frame(width: radius)
+                                     endRadius: radius / 4))
+                .frame(width: radius / 2)
                 .rotationEffect(Angle(degrees: angleEarth))
-                .scaleEffect(isStart ? 0.9 : 0.8)
-                .animation(anim(3).repeatForever(autoreverses: true), value: isStart)
+                .scaleEffect(0.9)
                 .animationObserver(for: angleEarth) { value in
                     let (earthX, earthY) = orbitPlanet(radius: radius, angle: value)
                     self.coordinateEarthX = earthX
@@ -51,67 +61,78 @@ struct OrbitGenerate: View {
                     self.coordinateMarsY = marsY
                     self.scaleMars = scalePlanet(angle: value)
                 }
-            ForEach(0...360, id: \.self) { elem in
-                let convert = Double(elem)
+            ForEach(0...360, id: \.self) {
+                let convert = Double($0)
                 if convert.truncatingRemainder(dividingBy: 5) == 0 {
-                    let (x, y) = calculateOrbit(radius: radius, angle: Double(elem))
+                    let (x, y) = calculateOrbit(radius: radius, angle: Double($0))
                     Circle()
                         .fill(.black)
                         .frame(width: 1, height: 1)
                         .offset(x: x, y: y)
                 }
             }
-            EarthAnim(scale: $scaleEarth, radius: 50)
+            PlanetAnim(isEarthCart: $isStart,
+                      scale: $scaleEarth,
+                      radius: 50)
                 .offset(x: coordinateEarthX, y: coordinateEarthY)
-            ForEach(0...360, id: \.self) { elem in
-                let convert = Double(elem)
+            ForEach(0...360, id: \.self) {
+                let convert = Double($0)
                 if convert.truncatingRemainder(dividingBy: 2.5) == 0 {
-                    let (x, y) = calculateOrbit(radius: radius + 125, angle: Double(elem))
+                    let (x, y) = calculateOrbit(radius: radius + 125, angle: Double($0))
                     Circle()
                         .fill(.black)
                         .frame(width: 1, height: 1)
                         .offset(x: x, y: y)
                 }
             }
-            EarthAnim(scale: $scaleMars, image: Image.marsCartAnim, radius: 40, tiltAngle: 25.1)
+            PlanetAnim(isEarthCart: $isStart,
+                      scale: $scaleMars,
+                      image: Image.marsCartAnim,
+                      radius: 40,
+                      tiltAngle: 25.1)
                 .offset(x: coordinateMarsX, y: coordinateMarsY)
             Circle()
                 .opacity(0)
                 .overlay(Circle()
                     .trim(from: 0.5, to: 1.0)
                     .fill(RadialGradient(gradient: Gradient(colors: [.yellow, .yellow.opacity(1), .yellow.opacity(0.0)]),
-                                        center: .center,
-                                        startRadius: 1,
-                                        endRadius: radius / 2))
+                                         center: .center,
+                                         startRadius: 1,
+                                         endRadius: radius / 4))
                 )
                 .scaleEffect(0.8)
-                .animation(anim(3).repeatForever(autoreverses: true), value: isStart)
                 .frame(width: radius / 2)
         }
         .onAppear() {
             DispatchQueue.main.async {
+                self.isStart = true
                 withAnimation(anim(7)) {
-                 self.isStart = true
-                  self.angleEarth = 360
-              }
+                    if isStart {
+                        self.angleEarth = 360
+                    } else {
+                        self.angleEarth = 0
+                    }
+                }
             }
             DispatchQueue.main.async {
                 withAnimation(anim(16)) {
-                  self.angleMars = 360
-              }
+                    if isStart {
+                        self.angleMars = 360
+                    } else {
+                        self.angleMars = 0
+                    }
+                }
             }
         }
     }
-
+    
     private func anim(_ duration: Double) -> Animation {
-        return
-            .linear(duration: duration)
-            .repeatForever(autoreverses: false)
+        .linear(duration: duration)
+        .repeatForever(autoreverses: false)
     }
     
     private func animStop() -> Animation {
-        return
-            .linear(duration: 0)
+        .linear(duration: 0)
     }
     
     private func cosinus(_ angle: Double) -> Double {
@@ -139,12 +160,11 @@ struct OrbitGenerate: View {
         return (x, y)
     }
     
-    
     private func calculateOrbitY(radius: CGFloat, angle: Double) -> CGFloat {
         (radius / 2) * sinus(angle) * multiplay
     }
     
-    func transformAngle(_ currentNumber: Double) -> Double {
+    private func transformAngle(_ currentNumber: Double) -> Double {
         let initialMin: Double = -1.0
         let initialMax: Double = 1.0
         
@@ -156,14 +176,15 @@ struct OrbitGenerate: View {
         
         return ((currentNumber - initialMin) * rangeNumber / rangeAngle) + desiredMin
     }
-    
 }
 
+#if DEBUG
 struct OrbitGenerate_Previews: PreviewProvider {
     static var previews: some View {
         OrbitGenerate()
     }
 }
+#endif
 
 
 

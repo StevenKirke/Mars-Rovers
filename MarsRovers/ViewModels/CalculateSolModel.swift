@@ -16,7 +16,6 @@ struct Filter {
 
 class CalculateSolModel: ObservableObject {
     
-    
     @Published var countPicker: Int = 0
     @Published var breakSol: [Int] = []
     @Published var tempSol = 0

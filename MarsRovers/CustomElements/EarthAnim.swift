@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-struct EarthAnim: View {
+struct PlanetAnim: View {
     
-    @State var isEarthCart: Bool = false
-    
+    @Binding var isEarthCart: Bool
     @Binding var scale: CGFloat
     
     var image: Image = Image.earthCartAnim
@@ -66,9 +65,10 @@ struct EarthAnim: View {
     }
 }
 
-
-struct EarthAnim_Previews: PreviewProvider {
+#if DEBUG
+struct PlanetAnim_Previews: PreviewProvider {
     static var previews: some View {
-        EarthAnim(scale: .constant(1.0), radius: 250)
+        PlanetAnim(isEarthCart: .constant(true), scale: .constant(1.0), radius: 250)
     }
 }
+#endif

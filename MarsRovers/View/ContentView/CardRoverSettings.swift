@@ -12,47 +12,57 @@ struct CardRoverSettings: View {
     @Binding var isSetting: Bool
     var rover: Rover
     var height: CGFloat
-
     
     var body: some View {
-        GeometryReader { _ in
-            VStack(spacing: 10) {
-                HStack(spacing: 25)  {
-                    Button(action: {
-                        DispatchQueue.main.async {
-                            withAnimation {
-                                self.isSetting.toggle()
-                            }
+        NavigationLink(destination: EmptyView()) {
+            GeometryReader { _ in
+                VStack(spacing: 10) {
+                    Button(action: {}) {
+                        HStack(spacing: 11) {
+                            Text("Show photos")
+                                .customFont(size: 16)
+                                .fontWeight(.regular)
+                            Image(systemName: "chevron.forward")
+                                .font(.system(size: 16, weight: .regular))
                         }
-                    }) {
-                        Image.gear
-                            .iconSize(size: 30)
-                            .rotationEffect(Angle(degrees: isSetting ? -90 : 0))
                     }
-                    Spacer()
-                        .foregroundColor(.white)
+                    HStack(spacing: 25)  {
+                        Button(action: {
+                            DispatchQueue.main.async {
+                                withAnimation {
+                                    self.isSetting.toggle()
+                                }
+                            }
+                        }) {
+                            Image.gear
+                                .iconSize(size: 30)
+                                .rotationEffect(Angle(degrees: isSetting ? -90 : 0))
+                        }
+                        Spacer()
+                            .foregroundColor(.white)
+                    }
+                    RoundedRectangle(cornerRadius: 1)
+                        .fill(Color.b_555555)
+                        .frame(height: 2)
+                    SettingRover(isSetting: $isSetting, cameras: rover.cameras)
                 }
-                RoundedRectangle(cornerRadius: 1)
-                    .fill(Color.b_555555)
-                    .frame(height: 2)
-                SettingRover(isSetting: $isSetting, cameras: rover.cameras)
+                .padding(.horizontal, 26)
+                .padding(.top, 15)
+                .foregroundColor(.white)
             }
-            .padding(.horizontal, 26)
-            .padding(.top, 15)
-            .foregroundColor(.white)
+            .frame(height: height)
+            .background(
+                VStack(spacing: 0) {
+                    Image.starfield
+                        .resizable()
+                    Image.starfield
+                        .resizable()
+                        .rotationEffect(.degrees(180))
+                }
+                    .mask(RoundedCornersShape(corners: [.topLeft, .topRight], radius: 13)
+                        .fill(Color.white))
+            )
         }
-        .frame(height: height)
-        .background(
-            VStack(spacing: 0) {
-                Image.starfield
-                    .resizable()
-                Image.starfield
-                    .resizable()
-                    .rotationEffect(.degrees(180))
-            }
-                .mask(RoundedCornersShape(corners: [.topLeft, .topRight], radius: 13)
-                    .fill(Color.white))
-        )
     }
 }
 
@@ -239,8 +249,28 @@ struct ButtonCamera: View {
 #if DEBUG
 struct CardRoverSettings_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(globalModel: GlobalModel())
     }
 }
 #endif
 
+
+/*
+ NavigationLink(destination: PhotosView(), isActive: $isGallery) {}
+ Button(action: {
+ DispatchQueue.main.async {
+ withAnimation {
+ self.isGallery = true
+ }
+ }
+ }) {
+ HStack(spacing: 11) {
+ Text("Show photos")
+ .customFont(size: 16)
+ .fontWeight(.regular)
+ Image(systemName: "chevron.forward")
+ .font(.system(size: 16, weight: .regular))
+ }
+ }
+ }
+ */

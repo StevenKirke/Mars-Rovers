@@ -10,6 +10,7 @@
 		3202F4382A0DBCF200259B58 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3202F4372A0DBCF200259B58 /* Views.swift */; };
 		3202F43A2A0DBD2100259B58 /* AnimateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3202F4392A0DBD2100259B58 /* AnimateObserver.swift */; };
 		3205789C2A0E6920002B870B /* PhotosWithCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3205789B2A0E6920002B870B /* PhotosWithCamera.swift */; };
+		3233C7BE2A37444B00CECCF0 /* GearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3233C7BD2A37444B00CECCF0 /* GearButton.swift */; };
 		323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E1DD129E1FB7900D2165B /* ContentView.swift */; };
 		326129F729FEE3CF00879DCE /* PhotoDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */; };
 		326129F92A010D0D00879DCE /* ButtonForNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129F82A010D0D00879DCE /* ButtonForNavigation.swift */; };
@@ -48,7 +49,6 @@
 		32D66D9929E9E4E4005D8789 /* CardRoverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */; };
 		32EE00AF2A2E1C3300A2F605 /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00AE2A2E1C3300A2F605 /* Urls.swift */; };
 		32EE00B52A326EE600A2F605 /* OrbitGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00B42A326EE600A2F605 /* OrbitGenerate.swift */; };
-		32EE00B72A32891000A2F605 /* EllipseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE00B62A32891000A2F605 /* EllipseTest.swift */; };
 		32FEBFCE29E2DEE9002D4499 /* Nasa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */; };
 		32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEBFCF29E2DFE8002D4499 /* Fonts.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +57,7 @@
 		3202F4372A0DBCF200259B58 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		3202F4392A0DBD2100259B58 /* AnimateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateObserver.swift; sourceTree = "<group>"; };
 		3205789B2A0E6920002B870B /* PhotosWithCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosWithCamera.swift; sourceTree = "<group>"; };
+		3233C7BD2A37444B00CECCF0 /* GearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearButton.swift; sourceTree = "<group>"; };
 		323E1DD129E1FB7900D2165B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDescriptionView.swift; sourceTree = "<group>"; };
 		326129F82A010D0D00879DCE /* ButtonForNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonForNavigation.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		32D66D9829E9E4E4005D8789 /* CardRoverSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRoverSettings.swift; sourceTree = "<group>"; };
 		32EE00AE2A2E1C3300A2F605 /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
 		32EE00B42A326EE600A2F605 /* OrbitGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitGenerate.swift; sourceTree = "<group>"; };
-		32EE00B62A32891000A2F605 /* EllipseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseTest.swift; sourceTree = "<group>"; };
 		32FEBFCD29E2DEE9002D4499 /* Nasa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nasa.ttf; sourceTree = "<group>"; };
 		32FEBFCF29E2DFE8002D4499 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,7 +281,7 @@
 				3202F4392A0DBD2100259B58 /* AnimateObserver.swift */,
 				326A31702A2BB0BE00B607B7 /* EarthAnim.swift */,
 				32EE00B42A326EE600A2F605 /* OrbitGenerate.swift */,
-				32EE00B62A32891000A2F605 /* EllipseTest.swift */,
+				3233C7BD2A37444B00CECCF0 /* GearButton.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -409,11 +409,11 @@
 				32CF698229FA7D6000B7855B /* PhotosViewModel.swift in Sources */,
 				32D66D9529E967F1005D8789 /* Rovers.swift in Sources */,
 				32FEBFD029E2DFE8002D4499 /* Fonts.swift in Sources */,
-				32EE00B72A32891000A2F605 /* EllipseTest.swift in Sources */,
 				323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */,
 				32980DC629E1F8D5004F0852 /* AppDelegate.swift in Sources */,
 				32D66D7429E4240A005D8789 /* InfinityCarousel.swift in Sources */,
 				32D66D8829E6F130005D8789 /* Rover.swift in Sources */,
+				3233C7BE2A37444B00CECCF0 /* GearButton.swift in Sources */,
 				32CF697C29F936DE00B7855B /* PhotosView.swift in Sources */,
 				32CF698629FAE8E000B7855B /* CustomImage.swift in Sources */,
 				32980DC829E1F8D5004F0852 /* SceneDelegate.swift in Sources */,
@@ -587,9 +587,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarsRovers/Resourses/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Mars rovers";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -620,9 +620,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarsRovers/Resourses/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Mars rovers";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;

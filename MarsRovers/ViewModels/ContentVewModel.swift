@@ -14,10 +14,12 @@ struct ImagesRovers {
 
 
 
+@available(iOS 16.0, *)
 class ContentVewModel: ObservableObject {
     
     var requestData: RequestData = RequestData()
     
+    @Published var isActive: Bool = false
     @Published var isSetting: Bool = false
     @Published var rovers: Rovers = Rovers(rovers: [])
     @Published var arrayRovers: [ImagesRovers] = []
@@ -30,13 +32,38 @@ class ContentVewModel: ObservableObject {
     }
     
     init() {
-        getData()
+       getData()
         //getMock()
     }
     
+    /*
+     var urlComponents: URLComponents? {
+
+         let resultID = "resultID123"
+         let resultResponseID = "responseID456"
+         let questionIndex = "questionNumbers1"
+
+         var urlComponents = URLComponents(string: sampleURL)
+         urlComponents?.queryItems = [
+             URLQueryItem(name: "surveyResultsId", value: "\(String(describing: resultID))"),
+             URLQueryItem(name: "surveyResultsResponseId", value: "\(String(describing: resultResponseID))"),
+             URLQueryItem(name: "questions", value: "\(questionIndex)"),
+             URLQueryItem(name: "selectedAnswer", value: "\("storedAnswer1")")
+
+         ]
+         return urlComponents
+     }
+
+     if let urlComponents = urlComponents, let url = urlComponents.url?.absoluteURL {
+         sendRequest(url) { (result, error) in
+             print("Got an answer: \(String(describing: result))")
+         }
+     }
+     */
+    
     
     private func assamblyURL(url: String, key: String, value: String) -> URLRequest? {
-        print("URL - \(url)")
+        //print("URL - \(url)")
         guard var currentUrl = URL(string: url) else {
             print("Error convert URL")
             return nil
@@ -70,6 +97,7 @@ class ContentVewModel: ObservableObject {
                 return
             }
             self.title = name
+            self.isActive = true
             
             if !self.rovers.rovers.isEmpty {
                 self.addImage()

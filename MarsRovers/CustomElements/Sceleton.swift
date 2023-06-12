@@ -9,10 +9,12 @@ import SwiftUI
 
 struct Sceleton: View {
     
-    private let background: Color = Color.black.opacity(0.1)
+    private let background: Color = Color.white.opacity(0.2)
     private let color: [Color] = [
         Color.gray.opacity(0.0),
-        Color.gray.opacity(0.1),
+        Color.gray.opacity(0.06),
+        Color.white.opacity(0.11),
+        Color.gray.opacity(0.06),
         Color.gray.opacity(0.0)
     ]
     
@@ -38,7 +40,7 @@ struct Sceleton: View {
                             LinearGradient(colors: color, startPoint: .leading, endPoint: .trailing)
                         )
                         .background(LinearGradient(colors: color, startPoint: .leading, endPoint: .trailing))
-                        .rotationEffect(Angle(degrees: 7))
+                        .rotationEffect(Angle(degrees: 10))
                         .frame(width: widthGradient, height: heigtGradient)
                         .offset(y: (heighContainer - heigtGradient) / 2)
                         .offset(x: CGFloat(tempOffset))

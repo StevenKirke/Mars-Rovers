@@ -8,6 +8,16 @@
 import UIKit
 import SwiftUI
 
+class GlobalModel: ObservableObject {
+    
+    @Published var safeArea: (top: CGFloat, bottom: CGFloat)
+    
+    init() {
+        self.safeArea = (0, 0)
+    }
+}
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -19,7 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         //guard let _ = (scene as? UIWindowScene) else { return }
         
-        let contentView = OrbitGenerate()//ContentView()
+        let globalModel = GlobalModel()
+        let contentView = ContentView(globalModel: GlobalModel()).environmentObject(globalModel)
         
 
         if let windowScene = scene as? UIWindowScene {

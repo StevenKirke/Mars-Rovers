@@ -25,7 +25,7 @@ struct PhotosView: View {
                 ZStack(alignment: .bottom) {
                     Color.black.opacity(0.25)
                     VStack(spacing: 0) {
-                        CustomNavigationView(title: name, height: saveAreaTop,
+                        CustomNavigationView(title: name,
                                              content: ButtonForNavigation(action: {
                             DispatchQueue.main.async {
                                 withAnimation {

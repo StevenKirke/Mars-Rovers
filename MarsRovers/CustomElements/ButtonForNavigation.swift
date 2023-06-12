@@ -18,8 +18,10 @@ struct ButtonForNavigation: View {
     }
 }
 
+#if DEBUG
 struct ButtonForNavigation_Previews: PreviewProvider {
     static var previews: some View {
         ButtonForNavigation(action: {})
     }
 }
+#endif

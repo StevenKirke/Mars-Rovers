@@ -10,11 +10,11 @@ import SwiftUI
 
 struct ContentView: View, WriteRover {
     
+    @StateObject  var globalModel: GlobalModel
     @StateObject var calculateSol: CalculateSolModel = CalculateSolModel()
     @ObservedObject var contenVM: ContentVewModel = ContentVewModel()
     
     @State var isSetting: Bool = false
-    @State var isBlind: Bool = false
     
     func readingDataRover() {
         
@@ -30,52 +30,57 @@ struct ContentView: View, WriteRover {
             return
         }
         self.calculateSol.filterRover.camera = camera
-        
         calculateSol.breakdownWheel(currentRover.maxSol)
     }
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                if contenVM.arrayRovers.isEmpty {
-                    Text("1")
-                } else {
+        GeometryReader { geo in
+            NavigationView {
+                VStack(spacing: 0) {
                     answerView()
                 }
+                .edgesIgnoringSafeArea(.all)
             }
-            .edgesIgnoringSafeArea(.bottom)
+            .environmentObject(calculateSol)
+            .environmentObject(globalModel)
+            .onAppear {
+                self.globalModel.safeArea = (geo.safeAreaInsets.top, geo.safeAreaInsets.bottom)
+            }
         }
-        .environmentObject(calculateSol)
     }
     
     
     @ViewBuilder
-    func answerView() -> some View {
+    private func answerView() -> some View {
         GeometryReader { proxy in
-            let saveAreaTop = proxy.safeAreaInsets.top
             let heightInfo = proxy.size.height * 0.41
-            let heigthCarousel = proxy.size.height - heightInfo - 180
+            let heigthCarousel = proxy.size.height * 0.38
             ZStack(alignment: .bottom) {
-                VStack(spacing: 19) {
-                    CustomNavigationView(title: isSetting ? "Settings" : contenVM.rovers.rovers[contenVM.currentIndex].name, height: saveAreaTop, content: EmptyView())
-                        .border(.red)
-                    InfinityCarousel(index: $contenVM.currentIndex,
-                                     height: heigthCarousel + saveAreaTop,
-                                     views: contenVM.arrayRovers)
-                    .border(.blue)
+                VStack(spacing: 10) {
+                    if !contenVM.rovers.rovers.isEmpty {
+                        let name = isSetting ? "Settings" : contenVM.rovers.rovers[contenVM.currentIndex].name
+                        CustomNavigationView(title: name, content: EmptyView())
+                        InfinityCarousel(index: $contenVM.currentIndex,
+                                         height: heigthCarousel,
+                                         views: contenVM.arrayRovers)
+                    } else {
+                        CustomNavigationView(title: "Settings", content: EmptyView())
+                        PlanetAnimation(height: heigthCarousel)
+                    }
                     Spacer()
-                    
                 }
-                .offset(y: -saveAreaTop)
-                //.offset(y: -saveAreaTop)
-                CardContent(isSetting: $isSetting, currentCamera: $contenVM.currentIndex,
-                            rover: contenVM.rovers.rovers[contenVM.currentIndex],
-                            icon: contenVM.arrayRovers[contenVM.currentIndex].littleImage,
-                            height: heightInfo)
+                if !contenVM.rovers.rovers.isEmpty {
+                    CardContent(isActive: $contenVM.isActive,
+                                isSetting: $isSetting,
+                                currentCamera: $contenVM.currentIndex,
+                                rover: contenVM.rovers.rovers[contenVM.currentIndex],
+                                icon: contenVM.arrayRovers[contenVM.currentIndex].littleImage,
+                                height: heightInfo)
+                } else {
+                    SceletonCardRoverDescription(height: heightInfo)
+                }
             }
             .onAppear() {
-                print(proxy.safeAreaInsets.top)
-                print(proxy.safeAreaInsets.bottom)
                 if !contenVM.rovers.rovers.isEmpty {
                     saveDataRover(contenVM.currentIndex)
                 }
@@ -87,8 +92,42 @@ struct ContentView: View, WriteRover {
     }
 }
 
+struct PlanetAnimation: View  {
+    
+    var height: CGFloat
+    
+    var precent: CGFloat {
+        (80 * height) / 100
+    }
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            HStack(spacing: 0) {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.b_555555_30)
+                    .frame(width: UIScreen.main.bounds.width  / 4, height: precent)
+                Spacer()
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.b_555555_30)
+                    .frame(width: UIScreen.main.bounds.width  / 4, height: precent)
+            }
+            .offset(y: 25)
+            VStack(spacing: 0) {
+                OrbitGenerate()
+            }
+            .frame(width: UIScreen.main.bounds.width - 52, height: height)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(.gray)
+            )
+            .cornerRadius(10)
+        }
+    }
+}
+
 struct CardContent: View {
     
+    @Binding var isActive: Bool
     @Binding var isSetting: Bool
     @Binding var currentCamera: Int
     
@@ -108,14 +147,13 @@ struct CardContent: View {
                     .fill(Color.b_000000_25)
                     .frame(height: height)
                     .offset(y: -height - 64)
-                // .opacity(isSetting ? 1 : 0)
                 CardRoverSettings(isSetting: $isSetting,
                                   rover: rover,
                                   height: height * 1.7)
             }
             .frame(width: UIScreen.main.bounds.width)
         }
-        .frame(width: UIScreen.main.bounds.width)
+        .frame(maxWidth: UIScreen.main.bounds.width)
         .offset(x: changeOffset())
         .animation(anim(), value: isSetting)
     }
@@ -125,13 +163,8 @@ struct CardContent: View {
         return !isSetting ? width : -width
     }
     
-    private func showBlind() {
-        print("height - \(height)")
-    }
-    
     private func anim() -> Animation {
-        return
-            .easeInOut(duration: 1.5)
+        .easeInOut(duration: 1.5)
     }
 }
 
@@ -139,7 +172,8 @@ struct CardContent: View {
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(globalModel: GlobalModel())
     }
 }
 #endif
+

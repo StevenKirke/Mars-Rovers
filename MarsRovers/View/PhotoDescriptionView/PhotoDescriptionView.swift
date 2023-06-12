@@ -26,7 +26,7 @@ struct PhotoDescriptionView: View {
         GeometryReader { geo in
             let saveAreaTop = geo.safeAreaInsets.top
             VStack(spacing: 0) {
-                CustomNavigationView(title: "", height: saveAreaTop, content: ButtonForNavigation(action: {
+                CustomNavigationView(title: "", content: ButtonForNavigation(action: {
                     DispatchQueue.main.async {
                         withAnimation {
                             self.returnPhotos.wrappedValue.dismiss()

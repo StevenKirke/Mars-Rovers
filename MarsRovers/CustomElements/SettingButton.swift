@@ -26,7 +26,7 @@ struct SettingButton: View {
                     HStack {
                         Text("Show photos")
                             .customFont(size: 16)
-                            .fontWeight(.regular)
+                            .font(Font.footnote.weight(.regular))
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .bold))
                     }

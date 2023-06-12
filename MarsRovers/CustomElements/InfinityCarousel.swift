@@ -28,7 +28,6 @@ struct InfinityCarousel: View {
     var views: [ImagesRovers]
     
     var body: some View {
-        
         let tempIndex = Binding {
             relativeLoc(views)
         } set: {
@@ -66,7 +65,7 @@ struct InfinityCarousel: View {
                                index: item)
                 }
             }
-            .padding(.top, 25)
+            .padding(.top, 0)
         }
     }
 }
@@ -229,7 +228,7 @@ struct LittleIcon: View {
 #if DEBUG
 struct InfinityNumber_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(globalModel: GlobalModel())
     }
 }
 #endif

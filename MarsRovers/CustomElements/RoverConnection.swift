@@ -27,7 +27,7 @@ struct CardRoverConnect: View {
                     }
                 }
             Spacer()
-            EarthAnim(scale: $scale, image: Image.marsCartAnim, radius: sizeRover)
+            PlanetAnim(isEarthCart: .constant(false), scale: $scale, image: Image.earthCartAnim, radius: sizeRover)
                 .offset(x: 0, y: -sizeRover / 3)
         }
         .padding(.horizontal, 20)
@@ -51,12 +51,10 @@ struct RoverConnection: View {
     @State var roverG: CGRect = .zero
     @State var roverL: CGRect = .zero
     
-    var sizeRover: CGFloat
-    
     @State var rotate: Double = 0.0
-    
     @State var isAnin: Bool = false
     
+    var sizeRover: CGFloat
     var offsetRover: CGPoint = .init(x: 0, y: 0)
     
     
@@ -148,13 +146,12 @@ struct CircleAnimation: View {
 }
 
 
-
-
+#if DEBUG
 struct RoverConnection_Previews: PreviewProvider {
     static var previews: some View {
         CardRoverConnect()
     }
 }
-
+#endif
 
 
