@@ -9,21 +9,14 @@ import SwiftUI
 
 struct GearButton: View {
     
-    @Binding var isSetting: Bool
-    
+    var rotate: Double
     var action: () -> Void
     
     var body: some View {
-        Button(action: {
-            DispatchQueue.main.async {
-                withAnimation {
-                    self.isSetting.toggle()
-                }
-            }
-        }) {
+        Button(action: action) {
             Image.gear
                 .iconSize(size: 30)
-                .rotationEffect(Angle(degrees: isSetting ? -90 : 0))
+                .rotationEffect(Angle(degrees: rotate))
         }
     }
 }
@@ -31,7 +24,7 @@ struct GearButton: View {
 #if DEBUG
 struct GearButton_Previews: PreviewProvider {
     static var previews: some View {
-        GearButton(isSetting: .constant(true), action: {})
+        GearButton(rotate: 0, action: {})
     }
 }
 #endif

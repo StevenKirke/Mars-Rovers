@@ -26,10 +26,10 @@ struct CustomNavigationView<Content: View>: View {
                 ZStack {
                     Text(title.uppercased())
                         .customFont(size: 22)
-                        .font(.footnote.bold())
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .padding(.top, 15)
-                    HStack() {
+                    HStack(spacing: 0) {
                         content
                             .foregroundColor(.white)
                             .offset(y: 8)

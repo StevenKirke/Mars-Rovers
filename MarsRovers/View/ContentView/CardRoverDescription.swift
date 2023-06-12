@@ -11,8 +11,7 @@ import SwiftUI
 struct CardRoverDescription: View {
     
     @EnvironmentObject var calculateSol: CalculateSolModel
-    
-    //@State var isGallery: Bool = false
+
     @Binding var isSetting: Bool
     
     var rover: Rover
@@ -25,17 +24,11 @@ struct CardRoverDescription: View {
             VStack(spacing: 10) {
                 HStack(spacing: 25) {
                     Spacer()
-                    Button(action: {
+                    GearButton(rotate: isSetting ? -90 : 0) {
                         DispatchQueue.main.async {
                             withAnimation {
                                 self.isSetting.toggle()
                             }
-                        }
-                    }) {
-                        HStack(spacing: 25) {
-                            Image.gear
-                                .iconSize(size: 30)
-                                .rotationEffect(Angle(degrees: isSetting ? -90 : 0))
                         }
                     }
                 }
@@ -89,17 +82,7 @@ struct SceletonCardRoverDescription: View {
             VStack(spacing: 10) {
                 HStack(spacing: 25) {
                     Spacer()
-                    Button(action: {
-                        DispatchQueue.main.async {
-                            
-                        }
-                    }) {
-                        HStack(spacing: 25) {
-                            Image.gear
-                                .iconSize(size: 30)
-                            
-                        }
-                    }
+                    GearButton(rotate: 0, action: {})
                 }
                 RoundedRectangle(cornerRadius: 1)
                     .fill(Color.b_555555)
@@ -121,7 +104,6 @@ struct SceletonCardRoverDescription: View {
                 RoundedCornersShape(corners: [.topLeft, .topRight], radius: 13)
                     .fill(Color.white))
         )
-        
     }
 }
 
@@ -137,11 +119,11 @@ struct LabelRover: View {
                 .iconSize(size: 30)
             Text(title)
                 .customFont(size: 16)
-                .font(.footnote.bold())
+                .fontWeight(.bold)
             Spacer()
             Text(data)
                 .customFont(size: 16)
-                .font(.footnote.bold())
+                .fontWeight(.bold)
         }
     }
 }
@@ -151,10 +133,10 @@ struct LabelRover: View {
 struct CardRoverDescription_Previews: PreviewProvider {
     static var previews: some View {
         SceletonCardRoverDescription(height: 300)
-//        CardRoverDescription(isSetting: .constant(true),
-//                             rover: testRover,
-//                             icon: .iconPerseverance,
-//                             height: 300)
+        //        CardRoverDescription(isSetting: .constant(true),
+        //                             rover: testRover,
+        //                             icon: .iconPerseverance,
+        //                             height: 300)
     }
 }
 
@@ -184,13 +166,3 @@ var testCameras = [Camera(id: 33,
                           roverID: 8,
                           fullName: "Navigation Camera - Left")]
 #endif
-
-
-
-/*
- VStack(spacing: 10) {
- ForEach(0...4, id: \.self) { elem in
- Sceleton(heighContainer: 30, widthContainer: UIScreen.main.bounds.width - 52)
- }
- }
- */

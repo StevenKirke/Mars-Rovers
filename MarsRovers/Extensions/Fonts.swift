@@ -12,6 +12,5 @@ extension Text {
     func customFont(size: CGFloat) -> some View {
         self
             .font(Font.custom("Helvetica Neue", size: size))
-           // .fontDesign(.default)
     }
 }

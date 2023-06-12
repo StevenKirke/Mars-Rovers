@@ -12,6 +12,7 @@
 		3205789C2A0E6920002B870B /* PhotosWithCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3205789B2A0E6920002B870B /* PhotosWithCamera.swift */; };
 		3233C7BE2A37444B00CECCF0 /* GearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3233C7BD2A37444B00CECCF0 /* GearButton.swift */; };
 		323E1DD229E1FB7900D2165B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E1DD129E1FB7900D2165B /* ContentView.swift */; };
+		32403D692A37811C00F79230 /* SignalAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32403D682A37811C00F79230 /* SignalAnim.swift */; };
 		326129F729FEE3CF00879DCE /* PhotoDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */; };
 		326129F92A010D0D00879DCE /* ButtonForNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129F82A010D0D00879DCE /* ButtonForNavigation.swift */; };
 		326129FB2A01163D00879DCE /* RoverConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326129FA2A01163D00879DCE /* RoverConnection.swift */; };
@@ -59,6 +60,7 @@
 		3205789B2A0E6920002B870B /* PhotosWithCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosWithCamera.swift; sourceTree = "<group>"; };
 		3233C7BD2A37444B00CECCF0 /* GearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearButton.swift; sourceTree = "<group>"; };
 		323E1DD129E1FB7900D2165B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		32403D682A37811C00F79230 /* SignalAnim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalAnim.swift; sourceTree = "<group>"; };
 		326129F629FEE3CF00879DCE /* PhotoDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDescriptionView.swift; sourceTree = "<group>"; };
 		326129F82A010D0D00879DCE /* ButtonForNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonForNavigation.swift; sourceTree = "<group>"; };
 		326129FA2A01163D00879DCE /* RoverConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverConnection.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				326A31702A2BB0BE00B607B7 /* EarthAnim.swift */,
 				32EE00B42A326EE600A2F605 /* OrbitGenerate.swift */,
 				3233C7BD2A37444B00CECCF0 /* GearButton.swift */,
+				32403D682A37811C00F79230 /* SignalAnim.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				3205789C2A0E6920002B870B /* PhotosWithCamera.swift in Sources */,
 				326129FB2A01163D00879DCE /* RoverConnection.swift in Sources */,
 				32CF697E29FA724400B7855B /* RoundedCornersShape.swift in Sources */,
+				32403D692A37811C00F79230 /* SignalAnim.swift in Sources */,
 				32EE00B52A326EE600A2F605 /* OrbitGenerate.swift in Sources */,
 				32D66D7229E423BD005D8789 /* Images.swift in Sources */,
 				32D66D8A29E6F16F005D8789 /* ContentVewModel.swift in Sources */,
