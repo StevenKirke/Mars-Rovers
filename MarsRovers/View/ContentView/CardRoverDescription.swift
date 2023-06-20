@@ -10,8 +10,8 @@ import SwiftUI
 
 struct CardRoverDescription: View {
     
-    @EnvironmentObject var calculateSol: CalculateSolModel
-
+    @EnvironmentObject var CalculateRoverSettingVM: CalculateRoverSettingModel
+    
     @Binding var isSetting: Bool
     
     var rover: Rover
@@ -24,10 +24,10 @@ struct CardRoverDescription: View {
             VStack(spacing: 10) {
                 HStack(spacing: 25) {
                     Spacer()
-                    GearButton(rotate: isSetting ? -90 : 0) {
+                    GearButton(rotate: 0) {
                         DispatchQueue.main.async {
                             withAnimation {
-                                self.isSetting.toggle()
+                                self.isSetting = true
                             }
                         }
                     }
@@ -56,7 +56,6 @@ struct CardRoverDescription: View {
                                    data: "\(rover.cameras.count)",
                                    image: .camera)
                     }
-                    
                 }
             }
             .padding(.horizontal, 26)
@@ -82,7 +81,7 @@ struct SceletonCardRoverDescription: View {
             VStack(spacing: 10) {
                 HStack(spacing: 25) {
                     Spacer()
-                    GearButton(rotate: 0, action: {})
+                    Sceleton(heighContainer: 30, widthContainer: 30, shape: .circle)
                 }
                 RoundedRectangle(cornerRadius: 1)
                     .fill(Color.b_555555)
@@ -132,11 +131,11 @@ struct LabelRover: View {
 #if DEBUG
 struct CardRoverDescription_Previews: PreviewProvider {
     static var previews: some View {
-        SceletonCardRoverDescription(height: 300)
-        //        CardRoverDescription(isSetting: .constant(true),
-        //                             rover: testRover,
-        //                             icon: .iconPerseverance,
-        //                             height: 300)
+       // SceletonCardRoverDescription(height: 300)
+                CardRoverDescription(isSetting: .constant(true),
+                                     rover: testRover,
+                                     icon: .iconPerseverance,
+                                     height: 300)
     }
 }
 

@@ -27,7 +27,7 @@ enum RoverImages: CaseIterable {
         }
     }
     
-    var bigImage: Image {
+    var image: Image {
         switch self {
             case .opportunity:
                 return Image.opportunity
@@ -39,7 +39,7 @@ enum RoverImages: CaseIterable {
                 return  Image.spirit
         }
     }
-    var littleImage: Image {
+    var icon: Image {
         switch self {
             case .opportunity:
                 return  Image.iconOpportunity

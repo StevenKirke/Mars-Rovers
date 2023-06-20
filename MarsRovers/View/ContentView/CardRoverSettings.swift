@@ -9,107 +9,92 @@ import SwiftUI
 
 struct CardRoverSettings: View {
     
+    @EnvironmentObject var CalculateRoverSettingM: CalculateRoverSettingModel
+    
     @Binding var isSetting: Bool
+    
     var rover: Rover
     var height: CGFloat
     
     var body: some View {
-        NavigationLink(destination: EmptyView()) {
-            GeometryReader { _ in
-                VStack(spacing: 10) {
-                    HStack(spacing: 25)  {
-                        GearButton(rotate: isSetting ? -90 : 0) {
-                            DispatchQueue.main.async {
-                                withAnimation {
-                                    self.isSetting.toggle()
-                                }
+        
+        GeometryReader { proxy in
+            VStack(spacing: 10) {
+                HStack(spacing: 25) {
+                    GearButton(rotate: 0) {
+                        DispatchQueue.main.async {
+                            withAnimation {
+                                self.isSetting = false
                             }
                         }
-                        Spacer()
-                            .foregroundColor(.white)
-                    Button(action: {}) {
-                        HStack(spacing: 11) {
-                            Text("Show photos")
-                                .customFont(size: 16)
-                                .fontWeight(.regular)
-                            Image(systemName: "chevron.forward")
-                                .font(.system(size: 16, weight: .regular))
-                        }
                     }
+                    Spacer()
+                    Button(action: {
+                        print(CalculateRoverSettingM.currentRover)
+                    }) {
+                        Text("Show photos")
+                            .customFont(size: 16)
+                            .fontWeight(.regular)
                     }
-                    /*
-                    Button(action: {}) {
-                        HStack(spacing: 11) {
-                            Text("Show photos")
-                                .customFont(size: 16)
-                                .fontWeight(.regular)
-                            Image(systemName: "chevron.forward")
-                                .font(.system(size: 16, weight: .regular))
-                        }
-                    }
-                    HStack(spacing: 25)  {
-                        GearButton(rotate: isSetting ? -90 : 0) {
-                            DispatchQueue.main.async {
-                                withAnimation {
-                                    self.isSetting.toggle()
-                                }
-                            }
-                        }
-                        Spacer()
-                            .foregroundColor(.white)
-                    }
-                    */
-                    RoundedRectangle(cornerRadius: 1)
-                        .fill(Color.b_555555)
-                        .frame(height: 2)
-                    SettingRover(isSetting: $isSetting, cameras: rover.cameras)
+                    //                    NavigationLink(destination: PhotosView(globalModel: GlobalModel())) {
+                    //                        HStack(spacing: 11) {
+                    //                            Text("Show photos")
+                    //                                .customFont(size: 16)
+                    //                                .fontWeight(.regular)
+                    //                            Image(systemName: "chevron.forward")
+                    //                                .font(.system(size: 16, weight: .regular))
+                    //                        }
+                    //                    }
                 }
-                .padding(.horizontal, 26)
-                .padding(.top, 15)
-                .foregroundColor(.white)
-            }
-            .frame(height: height)
-            .background(
+                RoundedRectangle(cornerRadius: 1)
+                    .fill(Color.b_555555)
+                    .frame(height: 2)
                 VStack(spacing: 0) {
-                    Image.starfield
-                        .resizable()
-                    Image.starfield
-                        .resizable()
-                        .rotationEffect(.degrees(180))
+                    ScrollView(.vertical, showsIndicators: false) {
+                        SettingRover(isSetting: $isSetting, cameras: rover.cameras)
+                    }
                 }
-                    .mask(RoundedCornersShape(corners: [.topLeft, .topRight], radius: 13)
-                        .fill(Color.white))
-            )
+            }
+            .padding(.horizontal, 26)
+            .padding(.top, 15)
+            .foregroundColor(.white)
         }
+        .frame(width: UIScreen.main.bounds.width, height: height)
+        .background(Image.starfield
+            .resizable()
+            .mask(
+                RoundedCornersShape(corners: [.topLeft, .topRight], radius: 13)
+                    .fill(Color.white))
+        )
     }
 }
 
 
 struct SettingRover: View, WriteRover {
     
-    @EnvironmentObject var calculateSol: CalculateSolModel
+    @EnvironmentObject var roverSetting: CalculateRoverSettingModel
     
-    @State var camera: String = ""
+    @State var camera: String = "" {
+        willSet {
+            if self.camera == "" {
+                self.camera = roverSetting.currentRover.camera
+            } else {
+                self.camera = newValue
+            }
+        }
+    }
     @Binding var isSetting: Bool
     
+    
     var title: String {
-        return "Sol: " + String(calculateSol.filterRover.sol)
+        "Sol: " + String(roverSetting.currentRover.sol)
     }
     
-    var currentSol: String {
-        removeZeros(number: calculateSol.breakSol)
-    }
-    
-    var cameras: [Camera]
-    
-    
-    func readingDataRover() {
-        
-    }
+    var cameras: [Camera] = []
     
     func saveDataRover(_ index: Int) {
-        calculateSol.filterRover.camera = camera
-        calculateSol.filterRover.tempSol = calculateSol.saveCurrentSol(maxSol: calculateSol.filterRover.sol)
+        roverSetting.currentRover.camera = camera
+        roverSetting.currentRover.tempSol = roverSetting.saveCurrentSol(maxSol: roverSetting.currentRover.sol)
     }
     
     var body: some View {
@@ -118,18 +103,16 @@ struct SettingRover: View, WriteRover {
                 HStack(spacing: 25) {
                     Image.sun
                         .iconSize(size: 30)
-                        .rotationEffect(Angle(degrees: isSetting ? 90 : 0))
                     Text(title)
                         .customFont(size: 16)
                         .fontWeight(.bold)
                     Spacer()
-                    Text(currentSol)
+                    Text(roverSetting.currentSol)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .padding(.trailing, 12)
                         .frame(width: 120, height: 27)
                         .background(Color.b_555555)
                         .cornerRadius(7)
-                    
                 }
                 showWheel()
                 showCameras()
@@ -142,8 +125,8 @@ struct SettingRover: View, WriteRover {
     private func showWheel() -> some View {
         if isSetting {
             HStack(spacing: 10) {
-                ForEach(0..<calculateSol.countPicker, id: \.self) { index in
-                    SelectWheel(selector: $calculateSol.breakSol[index], iteration: index)
+                ForEach(0..<roverSetting.countPickers, id: \.self) { index in
+                    SelectWheel(selector: $roverSetting.numberSolsInWheel[index], iteration: index)
                 }
             }
             .onDisappear() {
@@ -155,22 +138,6 @@ struct SettingRover: View, WriteRover {
     @ViewBuilder
     private func showCameras() -> some View {
         SelectCamera(cameras: cameras, camera: $camera)
-    }
-    
-    private func removeZeros(number: [Int]) -> String {
-        var tempString = ""
-        _ = number.map {
-            tempString = tempString + "\($0)"
-        }
-        let trim: String? = tempString.replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
-        
-        guard let tempTrim = trim else {
-            return "0"
-        }
-        if tempTrim == "" {
-            return "0"
-        }
-        return tempTrim
     }
 }
 
@@ -217,7 +184,9 @@ struct SelectCamera: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 10) {
                     ForEach(cameras.indices, id: \.self) { item in
-                        ButtonCamera(title: cameras[item].name, index: item, currentIndex: $indexCamera, camera: $camera)
+                        ButtonCamera(title: cameras[item].name,
+                                     index: item,
+                                     currentIndex: $indexCamera, camera: $camera)
                     }
                 }
             }

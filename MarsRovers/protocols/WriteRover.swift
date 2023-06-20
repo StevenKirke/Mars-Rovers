@@ -9,8 +9,6 @@ import Foundation
 
 protocol WriteRover {
     
-    func readingDataRover()
-    
     func saveDataRover(_ index: Int)
     
 }

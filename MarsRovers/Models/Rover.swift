@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Rovers: Codable {
+struct modelsRovers: Codable {
     let rovers: [Rover]
 }
 

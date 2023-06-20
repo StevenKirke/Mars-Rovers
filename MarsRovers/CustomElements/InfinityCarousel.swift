@@ -25,7 +25,7 @@ struct InfinityCarousel: View {
         return (precent * height) / 100
     }
     
-    var views: [ImagesRovers]
+    var views: [RoverIcons]
     
     var body: some View {
         let tempIndex = Binding {
@@ -36,7 +36,7 @@ struct InfinityCarousel: View {
         VStack {
             ZStack(alignment: .bottom) {
                 ForEach(0..<views.count, id: \.self) { item in
-                    BigCard(card: views[item].bigImage)
+                    BigCard(card: views[item].image)
                         .frame(width: UIScreen.main.bounds.width - 52,
                                height: item == relativeLoc(views) ? height : precent)
                         .cornerRadius(10)
@@ -61,7 +61,7 @@ struct InfinityCarousel: View {
             HStack(spacing: 16) {
                 ForEach(0..<views.count, id: \.self) { item in
                     LittleIcon(currentIndex: tempIndex,
-                               icon: views[item].littleImage,
+                               icon: views[item].icon,
                                index: item)
                 }
             }
@@ -224,11 +224,13 @@ struct LittleIcon: View {
             .opacity(index == currentIndex ? 1: 0.3)
     }
 }
+ 
+ 
+//#if DEBUG
+//struct InfinityNumber_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(globalModel: GlobalModel())
+//    }
+//}
+//#endif
 
-#if DEBUG
-struct InfinityNumber_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(globalModel: GlobalModel())
-    }
-}
-#endif

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct OrbitGenerate: View {
     
-    @State var isStart: Bool = false
+    @State var isAnimation: Bool = false
     
     @State var angleEarth: Double = 0.0
     @State var angleMars: Double = 0.0
@@ -71,10 +71,10 @@ struct OrbitGenerate: View {
                         .offset(x: x, y: y)
                 }
             }
-            PlanetAnim(isEarthCart: $isStart,
-                      scale: $scaleEarth,
-                      radius: 50)
-                .offset(x: coordinateEarthX, y: coordinateEarthY)
+            PlanetAnim(isEarthCart: $isAnimation,
+                       scale: $scaleEarth,
+                       radius: 50)
+            .offset(x: coordinateEarthX, y: coordinateEarthY)
             ForEach(0...360, id: \.self) {
                 let convert = Double($0)
                 if convert.truncatingRemainder(dividingBy: 2.5) == 0 {
@@ -85,12 +85,12 @@ struct OrbitGenerate: View {
                         .offset(x: x, y: y)
                 }
             }
-            PlanetAnim(isEarthCart: $isStart,
-                      scale: $scaleMars,
-                      image: Image.marsCartAnim,
-                      radius: 40,
-                      tiltAngle: 25.1)
-                .offset(x: coordinateMarsX, y: coordinateMarsY)
+            PlanetAnim(isEarthCart: $isAnimation,
+                       scale: $scaleMars,
+                       image: Image.marsCartAnim,
+                       radius: 40,
+                       tiltAngle: 25.1)
+            .offset(x: coordinateMarsX, y: coordinateMarsY)
             Circle()
                 .opacity(0)
                 .overlay(Circle()
@@ -105,26 +105,22 @@ struct OrbitGenerate: View {
         }
         .onAppear() {
             DispatchQueue.main.async {
-                self.isStart = true
+                self.isAnimation = true
                 withAnimation(anim(7)) {
-                    if isStart {
-                        self.angleEarth = 360
-                    } else {
-                        self.angleEarth = 0
-                    }
+                    self.angleEarth = 360
                 }
-            }
-            DispatchQueue.main.async {
                 withAnimation(anim(16)) {
-                    if isStart {
-                        self.angleMars = 360
-                    } else {
-                        self.angleMars = 0
-                    }
+                    self.angleMars = 360
                 }
             }
         }
+        .onDisappear() {
+            self.isAnimation = true
+            self.angleEarth = 0
+            self.angleMars = 0
+        }
     }
+    
     
     private func anim(_ duration: Double) -> Animation {
         .linear(duration: duration)

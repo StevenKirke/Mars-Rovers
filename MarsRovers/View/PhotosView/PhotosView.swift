@@ -9,18 +9,19 @@ import SwiftUI
 
 struct PhotosView: View {
     
-    @Environment(\.presentationMode) var returnSettings: Binding<PresentationMode>
-    @EnvironmentObject var calculateSol: CalculateSolModel
+    @StateObject  var globalModel: GlobalModel
+    @EnvironmentObject var calculateRover: CalculateRoverSettingModel
     
     @ObservedObject var PhotosVM: PhotosViewModel = PhotosViewModel()
     
+    @Environment(\.presentationMode) var returnSettings: Binding<PresentationMode>
+    
     var name: String {
-        calculateSol.filterRover.roverName
+        calculateRover.currentRover.roverName
     }
     
     var body: some View {
-        GeometryReader { geo in
-            let saveAreaTop = geo.safeAreaInsets.top
+        GeometryReader { proxy in
             NavigationView {
                 ZStack(alignment: .bottom) {
                     Color.black.opacity(0.25)
@@ -43,15 +44,15 @@ struct PhotosView: View {
                                 }
                             }
                             .mask(RoundedRectangle(cornerRadius: 13))
-                            .padding(.top, -saveAreaTop + 10)
                             .padding(.bottom, 10)
                         }
                     }
                 }
-                .edgesIgnoringSafeArea(.bottom)
-                .onAppear() {
-                    PhotosVM.getPhoto(rover: calculateSol.filterRover)
-                }
+                .edgesIgnoringSafeArea(.all)
+            }
+            .onAppear {
+                self.globalModel.safeArea = (proxy.safeAreaInsets.top, proxy.safeAreaInsets.bottom)
+                print(calculateRover.currentRover)
             }
         }
         .navigationBarTitle("", displayMode: .inline)
@@ -59,9 +60,7 @@ struct PhotosView: View {
     }
     
     private func calcHeight(width: CGFloat) -> CGFloat {
-        let ratio: Float = 396 / 300
-        let newHeight = Float(width) / ratio
-        return CGFloat(newHeight)
+         width / (396 / 300)
     }
 }
 
@@ -76,16 +75,16 @@ struct CardPhoto: View {
     var body: some View {
         ZStack(alignment: .trailing) {
             CustomImage(image: image, tempImage: $currentImage)
-            .scaledToFill()
-            .frame(width: size.width, height: size.height)
-            .mask(RoundedRectangle(cornerRadius: 13))
-            .background(
-                RoundedRectangle(cornerRadius: 13)
-                    .fill(Color.black)
-                    .shadow(color: .b_555555,radius: 4, y: 4)
-            )
-            .padding(.vertical, 2)
-            .padding(.horizontal, 4)
+                .scaledToFill()
+                .frame(width: size.width, height: size.height)
+                .mask(RoundedRectangle(cornerRadius: 13))
+                .background(
+                    RoundedRectangle(cornerRadius: 13)
+                        .fill(Color.black)
+                        .shadow(color: .b_555555,radius: 4, y: 4)
+                )
+                .padding(.vertical, 2)
+                .padding(.horizontal, 4)
             VStack(spacing: 0) {
                 Spacer()
                 ButtonInfo(isPhoto: $isPhoto, image: answerImage(image: currentImage), action: {
@@ -137,7 +136,7 @@ struct PhotosView_Previews: PreviewProvider {
     
     static var previews: some View {
         //ContentView()
-        PhotosView().environmentObject(CalculateSolModel())
+        PhotosView(globalModel: GlobalModel()).environmentObject(CalculateRoverSettingModel())
     }
 }
 #endif

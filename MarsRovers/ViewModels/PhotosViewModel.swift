@@ -14,7 +14,7 @@ class PhotosViewModel: ObservableObject {
     @Published var photos: Photos = Photos(photos: [])
     
     
-    func assamblyURL(rover: Filter)  -> URLRequest?  {
+    func assamblyURL(rover: CurrentRover)  -> URLRequest?  {
         //let url = "https://api.nasa.gov/mars-photos/api/v1/rovers/" + rover.roverName + "/photos/"
         let url = URLS.assambly(rover.roverName).url
         guard var currentUrl = URL(string: url) else {
@@ -33,7 +33,7 @@ class PhotosViewModel: ObservableObject {
     }
     
     
-    func getPhoto(rover: Filter) {
+    func getPhoto(rover: CurrentRover) {
         let request = assamblyURL(rover: rover)
         guard let currentRequest = request else {
             return

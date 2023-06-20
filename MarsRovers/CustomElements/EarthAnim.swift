@@ -23,11 +23,13 @@ struct PlanetAnim: View {
                     .scaledToFit()
                     .frame(width: radius)
                     .background(.gray)
+                    .foregroundColor(.black)
                 image
                     .resizable()
                     .scaledToFit()
                     .frame(width: radius)
                     .background(.gray)
+                    .foregroundColor(.black)
                     .offset(x: -radius)
             }
             .offset(x: isEarthCart ? radius : 0)
@@ -38,17 +40,12 @@ struct PlanetAnim: View {
             )
             .overlay(
                 Circle()
-                    .stroke(lineWidth: 2)
+                    .stroke(Color.black, lineWidth: 2)
                     .shadow(color: .black, radius: 5, x: 0, y: 0)
                     .mask(Circle())
             )
             .frame(width: radius, height: radius)
             .scaleEffect(x: scale, y: scale)
-            .onAppear() {
-                DispatchQueue.main.async {
-                    self.isEarthCart.toggle()
-                }
-            }
             .rotationEffect(Angle(degrees: tiltAngle))
     }
     
@@ -68,7 +65,7 @@ struct PlanetAnim: View {
 #if DEBUG
 struct PlanetAnim_Previews: PreviewProvider {
     static var previews: some View {
-        PlanetAnim(isEarthCart: .constant(true), scale: .constant(1.0), radius: 250)
+        PlanetAnim(isEarthCart: .constant(false), scale: .constant(1.0), radius: 250)
     }
 }
 #endif

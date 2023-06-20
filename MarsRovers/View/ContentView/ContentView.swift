@@ -9,88 +9,72 @@ import SwiftUI
 
 
 struct ContentView: View, WriteRover {
-    
-    @StateObject  var globalModel: GlobalModel
-    @StateObject var calculateSol: CalculateSolModel = CalculateSolModel()
-    @ObservedObject var contenVM: ContentVewModel = ContentVewModel()
-    
-    @State var isSetting: Bool = false
-    
-    func readingDataRover() {
         
-    }
+    @StateObject  var globalModel: GlobalModel
+    @StateObject var calculateRover: CalculateRoverSettingModel = CalculateRoverSettingModel()
+    
+    @ObservedObject var contenVM: ContentVewModel = ContentVewModel()
     
     func saveDataRover(_ index: Int) {
         let currentRover = contenVM.rovers.rovers[index]
-        self.calculateSol.filterRover.roverName = currentRover.name.lowercased()
-        self.calculateSol.filterRover.sol = currentRover.maxSol
-        self.calculateSol.filterRover.tempSol = 0
+        self.calculateRover.currentRover.roverName = currentRover.name.lowercased()
+        self.calculateRover.currentRover.sol = currentRover.maxSol
+        self.calculateRover.currentRover.tempSol = 0
         
         guard let camera = currentRover.cameras.first?.name else {
             return
         }
-        self.calculateSol.filterRover.camera = camera
-        calculateSol.breakdownWheel(currentRover.maxSol)
+        self.calculateRover.currentRover.camera = camera
+        calculateRover.breakdownWheel(currentRover.maxSol)
     }
     
     var body: some View {
-        GeometryReader { geo in
+        GeometryReader { proxy in
+            let heightCard = proxy.size.height * 0.41 + proxy.safeAreaInsets.top
+            let heigthCarousel = proxy.size.height * 0.38
             NavigationView {
-                VStack(spacing: 0) {
-                    answerView()
+                ZStack(alignment: .bottom) {
+                    VStack(spacing: 10) {
+                        CustomNavigationView(title: contenVM.title, content: EmptyView())
+                        if contenVM.isStart {
+                            InfinityCarousel(index: $contenVM.currentIndex,
+                                             height: heigthCarousel,
+                                             views: contenVM.roverIcons)
+                        } else {
+                            PlanetAnimation(height: heigthCarousel)
+                        }
+                        Spacer()
+                    }
+                    if contenVM.isStart {
+                        CardContent(rover: contenVM.rovers.rovers[contenVM.currentIndex],
+                                    icon: contenVM.roverIcons[contenVM.currentIndex].icon,
+                                    height: heightCard)
+                    } else {
+                        SceletonCardRoverDescription(height: heightCard)
+                        
+                    }
                 }
                 .edgesIgnoringSafeArea(.all)
             }
-            .environmentObject(calculateSol)
+            .environmentObject(calculateRover)
             .environmentObject(globalModel)
             .onAppear {
-                self.globalModel.safeArea = (geo.safeAreaInsets.top, geo.safeAreaInsets.bottom)
-            }
-        }
-    }
-    
-    
-    @ViewBuilder
-    private func answerView() -> some View {
-        GeometryReader { proxy in
-            let heightInfo = proxy.size.height * 0.41
-            let heigthCarousel = proxy.size.height * 0.38
-            ZStack(alignment: .bottom) {
-                VStack(spacing: 10) {
-                    if !contenVM.rovers.rovers.isEmpty {
-                        let name = isSetting ? "Settings" : contenVM.rovers.rovers[contenVM.currentIndex].name
-                        CustomNavigationView(title: name, content: EmptyView())
-                        InfinityCarousel(index: $contenVM.currentIndex,
-                                         height: heigthCarousel,
-                                         views: contenVM.arrayRovers)
-                    } else {
-                        CustomNavigationView(title: "Settings", content: EmptyView())
-                        PlanetAnimation(height: heigthCarousel)
-                    }
-                    Spacer()
-                }
-                if !contenVM.rovers.rovers.isEmpty {
-                    CardContent(isActive: $contenVM.isActive,
-                                isSetting: $isSetting,
-                                currentCamera: $contenVM.currentIndex,
-                                rover: contenVM.rovers.rovers[contenVM.currentIndex],
-                                icon: contenVM.arrayRovers[contenVM.currentIndex].littleImage,
-                                height: heightInfo)
-                } else {
-                    SceletonCardRoverDescription(height: heightInfo)
-                }
-            }
-            .onAppear() {
-                if !contenVM.rovers.rovers.isEmpty {
-                    saveDataRover(contenVM.currentIndex)
-                }
+                self.globalModel.safeArea = (proxy.safeAreaInsets.top, proxy.safeAreaInsets.bottom)
             }
             .onChange(of: contenVM.currentIndex) {
                 saveDataRover($0)
             }
+            .onChange(of: contenVM.isStart) { isStart in
+                if isStart == true {
+                    saveDataRover(0)
+                } else {
+                    
+                }
+            }
         }
     }
 }
+
 
 struct PlanetAnimation: View  {
     
@@ -127,9 +111,7 @@ struct PlanetAnimation: View  {
 
 struct CardContent: View {
     
-    @Binding var isActive: Bool
-    @Binding var isSetting: Bool
-    @Binding var currentCamera: Int
+    @State var isSetting: Bool = false
     
     var rover: Rover
     var icon: Image
@@ -142,18 +124,12 @@ struct CardContent: View {
                                  icon: icon,
                                  height: height)
             .frame(width: UIScreen.main.bounds.width)
-            ZStack(alignment: .bottom) {
-                Rectangle()
-                    .fill(Color.b_000000_25)
-                    .frame(height: height)
-                    .offset(y: -height - 64)
-                CardRoverSettings(isSetting: $isSetting,
-                                  rover: rover,
-                                  height: height * 1.7)
-            }
-            .frame(width: UIScreen.main.bounds.width)
+            CardRoverSettings(isSetting: $isSetting,
+                              rover: rover,
+                              height: height * 1.7)
+            .frame(maxWidth: UIScreen.main.bounds.width)
         }
-        .frame(maxWidth: UIScreen.main.bounds.width)
+        .frame(maxWidth: UIScreen.main.bounds.width * 2)
         .offset(x: changeOffset())
         .animation(anim(), value: isSetting)
     }
@@ -176,4 +152,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 #endif
-

@@ -7,22 +7,30 @@
 
 import Foundation
 
-struct Filter {
+struct CurrentRover {
     var roverName: String
     var sol: Int
     var tempSol: Int
     var camera: String
 }
 
-class CalculateSolModel: ObservableObject {
+class CalculateRoverSettingModel: ObservableObject {
     
-    @Published var countPicker: Int = 0
-    @Published var breakSol: [Int] = []
+    @Published var countPickers: Int = 0
+    @Published var numberSolsInWheel: [Int] = [] {
+        willSet {
+           
+        } didSet {
+            self.removingExtraZeros()
+        }
+    }
+    
     @Published var tempSol = 0
-    @Published var filterRover: Filter
+    @Published var currentRover: CurrentRover
+    @Published var currentSol: String = ""
     
     init() {
-        filterRover =  Filter(roverName: "", sol: 0, tempSol: 0, camera: "")
+        currentRover =  CurrentRover(roverName: "", sol: 0, tempSol: 0, camera: "")
     }
     
     
@@ -36,23 +44,25 @@ class CalculateSolModel: ObservableObject {
             num = num / 10
             count += 1
         }
-        self.countPicker = count
+        self.countPickers = count
         breakNumberSol(countSol)
     }
     
+    
     private func breakNumberSol(_ currentSol: Int) {
-        self.breakSol = []
+        self.numberSolsInWheel = []
         let currentString = String(currentSol)
         for (_, element) in currentString.enumerated() {
             if let number = Int(String(element)) {
-                breakSol.append(number)
+                numberSolsInWheel.append(number)
             }
         }
     }
     
+    
     func saveCurrentSol(maxSol: Int) -> Int {
         var myString = ""
-        _ = self.breakSol.map {
+        _ = self.numberSolsInWheel.map {
             myString = myString + "\($0)"
         }
         let currentNumber = Int(myString)
@@ -65,17 +75,19 @@ class CalculateSolModel: ObservableObject {
         return currentSol
     }
     
+    func removingExtraZeros() {
+        var tempString = ""
+        _ = self.numberSolsInWheel.map {
+            tempString = tempString + "\($0)"
+        }
+        let trim: String? = tempString.replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+        
+        guard let tempTrim = trim else {
+            return self.currentSol = ""
+        }
+        self.currentSol = tempTrim
+    }
 }
 
 
-//private func initFilter() {
-//        guard let rover = self.rovers.rovers.first else {
-//            return
-//        }
-//        guard let firstCamera = rover.cameras.first?.name else {
-//            return
-//        }
-//        calculateSol.filterRover.roverName = rover.name.lowercased()
-//        calculateSol.filterRover.sol = rover.maxSol
-//        calculateSol.filterRover.camera = firstCamera
-//}
+
